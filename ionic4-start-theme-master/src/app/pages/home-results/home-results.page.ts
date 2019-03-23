@@ -21,6 +21,7 @@ import { NotificationsComponent } from './../../components/notifications/notific
 export class HomeResultsPage {
   searchKey = '';
   themeCover = 'assets/img/Calc1.png';
+  themeCover2 = 'assets/img/Bulb3.png';
 
   constructor(
     public navCtrl: NavController,

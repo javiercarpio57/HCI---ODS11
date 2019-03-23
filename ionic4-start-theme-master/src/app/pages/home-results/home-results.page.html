@@ -5,7 +5,7 @@
     </ion-buttons>
     <ion-title>
         <ion-text color="light">
-          <ion-text color="light" class="fw700 titulo2">Solars</ion-text>
+          <ion-text color="light" class="fw700 titulo2">Solars<br></ion-text>
         </ion-text>
     </ion-title>
   </ion-toolbar>
@@ -15,20 +15,19 @@
 
 <ion-content>
 
-  <ion-card class="bg-button">
-
+  <ion-card class="bg-button espaciado">
     <ion-img [src]="themeCover" class="image-button"></ion-img>
-    
     <ion-button expand="full" color="dark" no-margin>
-      Calcular huella de carbono.
+      CALCULAR HUELLA DE CARBONO
     </ion-button>
-
   </ion-card>
 
-  <ion-button margin shape="round" expand="full" color="secondary" (click)="searchFilter()">
-    Modal 2: Search Filter
-  </ion-button>
+  <ion-card class="bg-button espaciado2">
+      <ion-img [src]="themeCover2" class="image-button"></ion-img>
+      <ion-button expand="full" color="dark" no-margin>
+        CÁLCULO ENERGÉTICO
+      </ion-button>
+    </ion-card>
   
-  <popmenu></popmenu>
 </ion-content>
   
