@@ -14,6 +14,17 @@ ion-item {
     --ion-item-background: transparent;
 }
 
+@font-face {
+  font-family: Titulo;
+  src: url(./assets/fonts/KodinahDiary.ttf)
+}
+
+.titulo {
+  font-family: Titulo;
+  font-size: 450%;
+  color: #fdfdf6;
+}
+
 // backgrounds //
 .bg-white {
   background-color: #fff;
