@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="secondary"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+        <ion-text color="light">
+          <ion-text color="light" class="fw700">Pregunta 3 - Test Huella Carbono</ion-text>
+        </ion-text>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary" padding>
+  <div>
+    <ion-progress-bar color="primary" value="0.3"></ion-progress-bar>
+    <ion-progress-bar color="primary" value="0.3"></ion-progress-bar>
+    <ion-progress-bar color="primary" value="0.3"></ion-progress-bar>
+  </div>
+  <br/>
+  <div>
+    <ion-list>
+      <ion-radio-group>
+        <ion-list-header >
+            <b><span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:25pt;">¿Qué transporte utilizas para tus actividades diarias?</span></b>
+        </ion-list-header>
+        <ion-item>
+          <br/>
+          <ion-label><span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Transporte público</span></ion-label>
+          <ion-radio value="cord"></ion-radio>
+          <br/>
+        </ion-item>
+
+        <ion-item>
+          <br/>
+          <ion-label><span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Voy en bicicleta o caminando</span></ion-label>
+          <ion-radio value="duesenberg"></ion-radio>
+          <br/>
+        </ion-item>
+        
+        <ion-item>
+          <br/>
+          <ion-label><span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Uso el carro o motocicleta</span></ion-label>
+          <ion-radio value="hudson"></ion-radio>
+          <br/>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+    <br/>
+  </div>
+  <div>
+      <img src="assets/img/transporte.jpg" class="center"/>
+  </div>
+  <div>
+    <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="goToNext4()" [disabled]="!onLoginForm.valid" tappable>
+      Siguiente Pregunta
+    </ion-button>
+  </div>
+  <div>
+      <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="goToBack2()" [disabled]="!onLoginForm.valid" tappable>
+        Pregunta Anterior
+      </ion-button>
+    </div> 
+
+</ion-content>

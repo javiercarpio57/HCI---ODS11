@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="secondary"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+        <ion-text color="light">
+          <ion-text color="light" class="fw700">Pregunta 4 - Test Huella Carbono</ion-text>
+        </ion-text>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary" padding>
+  <div>
+    <ion-progress-bar color="primary" value="0.4"></ion-progress-bar>
+    <ion-progress-bar color="primary" value="0.4"></ion-progress-bar>
+    <ion-progress-bar color="primary" value="0.4"></ion-progress-bar>
+  </div>
+  <br/>
+  <div>
+    <ion-list>
+      <ion-radio-group>
+        <ion-list-header >
+            <b><span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:25pt;">¿Cuándo usas la lavadora?</span></b>
+        </ion-list-header>
+        <ion-item>
+          <br/>
+          <ion-label><span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Espero a tener suficiente ropa para llenarla</span></ion-label>
+          <ion-radio value="cord"></ion-radio>
+          <br/>
+        </ion-item>
+
+        <ion-item>
+          <br/>
+          <ion-label><span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">La pongo en cuanto la necesito, sin importar la cantidad</span></ion-label>
+          <ion-radio value="duesenberg"></ion-radio>
+          <br/>
+        </ion-item>
+        
+        <ion-item>
+          <br/>
+          <ion-label><span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Espero a tener suficiente ropa y tengo un modelo de lavadora ahorrador</span></ion-label>
+          <ion-radio value="hudson"></ion-radio>
+          <br/>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+    <br/>
+  </div>
+  <div>
+      <img src="assets/img/lavadora.png" class="center"/>
+  </div>
+  <div>
+    <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="goToNext5()" [disabled]="!onLoginForm.valid" tappable>
+      Siguiente Pregunta
+    </ion-button>
+  </div>
+  <div>
+      <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="goToBack3()" [disabled]="!onLoginForm.valid" tappable>
+        Pregunta Anterior
+      </ion-button>
+    </div> 
+
+</ion-content>
