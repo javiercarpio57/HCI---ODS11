@@ -8,10 +8,7 @@ import {
   ModalController } from '@ionic/angular';
 
 // Modals
-import { SearchFilterPage } from '../../pages/modal/search-filter/search-filter.page';
 import { ImagePage } from './../modal/image/image.page';
-// Call notifications test by Popover and Custom Component.
-import { NotificationsComponent } from './../../components/notifications/notifications.component';
 
 @Component({
   selector: 'app-home-results',
@@ -42,6 +39,9 @@ export class HomeResultsPage {
     this.navCtrl.navigateForward('settings');
   }
 
+  goToEnergy() {
+    this.navCtrl.navigateForward('/energy');
+  }
 
   async presentImage(image: any) {
     const modal = await this.modalCtrl.create({
@@ -51,14 +51,6 @@ export class HomeResultsPage {
     return await modal.present();
   }
 
-  async notifications(ev: any) {
-    const popover = await this.popoverCtrl.create({
-      component: NotificationsComponent,
-      event: ev,
-      animated: true,
-      showBackdrop: true
-    });
-    return await popover.present();
-  }
+
 
 }

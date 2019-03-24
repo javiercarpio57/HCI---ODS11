@@ -1,13 +1,16 @@
 <ion-header>
   <ion-toolbar color="primary">
+    
     <ion-buttons slot="start">
       <ion-menu-button color="secondary"></ion-menu-button>
     </ion-buttons>
+
     <ion-title>
         <ion-text color="light">
           <ion-text color="light" class="fw700 titulo2">Solars<br></ion-text>
         </ion-text>
     </ion-title>
+
   </ion-toolbar>
 
   
@@ -22,12 +25,12 @@
     </ion-button>
   </ion-card>
 
-  <ion-card class="bg-button espaciado2">
-      <ion-img [src]="themeCover2" class="image-button"></ion-img>
-      <ion-button expand="full" color="dark" no-margin>
-        CÁLCULO ENERGÉTICO
-      </ion-button>
-    </ion-card>
+  <ion-card class="bg-button espaciado2" (click)="goToEnergy()" tappable>
+    <ion-img [src]="themeCover2" class="image-button"></ion-img>
+    <ion-button  expand="full" color="dark" no-margin>
+      CÁLCULO ENERGÉTICO
+    </ion-button>
+  </ion-card>
   
 </ion-content>
   
