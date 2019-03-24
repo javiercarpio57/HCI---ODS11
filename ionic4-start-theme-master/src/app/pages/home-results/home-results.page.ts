@@ -105,5 +105,8 @@ export class HomeResultsPage {
     });
     return await popover.present();
   }
+  goToBienvenida(){
+    this.navCtrl.navigateRoot('/bienvenida-test')
+  }
 
 }
