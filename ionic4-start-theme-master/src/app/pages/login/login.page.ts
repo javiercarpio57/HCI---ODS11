@@ -1,3 +1,5 @@
+import * as firebase from 'firebase';
+
 import { Component, OnInit } from '@angular/core';
 
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -112,5 +114,13 @@ export class LoginPage implements OnInit {
       });
       return await alert.present();
     }
+  }
+
+  resetPassword(email: string) {
+    var auth = firebase.auth();
+
+    return auth.sendPasswordResetEmail(email)
+      .then(() => console.log("email sent"))
+      .catch((error) => console.log(error))
   }
 }
