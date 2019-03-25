@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {IonSlides, ModalController} from '@ionic/angular';
+import {IonSlides, ModalController, NavController} from '@ionic/angular';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 
 import { ImagePage } from './../modal/image/image.page';
 
@@ -9,12 +10,31 @@ import { ImagePage } from './../modal/image/image.page';
   styleUrls: ['./energy.page.scss'],
 })
 export class EnergyPage implements OnInit {
+  myForm: FormGroup;
 
   @ViewChild('slideWithNav') slideWithNav: IonSlides;
   
   slider: any;
   themeCover = 'assets/img/leftArrow.png';
   themeCover2 = 'assets/img/rightArrow.png';
+  image = 'assets/img/e2.png';
+
+  i1 = 'assets/img/transparent.png';
+  i2 = 'assets/img/transparent.png';
+  i3 = 'assets/img/transparent.png';
+  i4 = 'assets/img/transparent.png';
+  i5 = 'assets/img/transparent.png';
+  i6 = 'assets/img/transparent.png';
+  i7 = 'assets/img/transparent.png';
+  i8 = 'assets/img/transparent.png';
+  i9 = 'assets/img/transparent.png';
+  i10 = 'assets/img/transparent.png';
+  i11 = 'assets/img/transparent.png';
+  i12 = 'assets/img/transparent.png';
+
+  contador = 0;
+  lista = [];
+  arreglo = [];
 
   slide = {
     initialSlide: 0,
@@ -22,7 +42,14 @@ export class EnergyPage implements OnInit {
     loop: true
   };
 
-  constructor(public modalCtrl: ModalController) { 
+  slide2 = {
+    initialSlide: 1,
+    slidesPerView: 1,
+    loop: true
+  };
+
+  constructor(public modalCtrl: ModalController, private formBuilder: FormBuilder, public navCtrl: NavController) { 
+    this.myForm = this.createMyForm();
 
     this.slider = {
       isBeginningSlide: true,
@@ -60,6 +87,10 @@ export class EnergyPage implements OnInit {
     };
   }
 
+  printSome(some: string){
+    console.log("Holaaa " + some);
+  }
+
   async presentImage(image: any) {
     const modal = await this.modalCtrl.create({
       component: ImagePage,
@@ -82,6 +113,14 @@ export class EnergyPage implements OnInit {
 
   slideDidChange(object, slideView){
     this.checkIfNavDisabled(object, slideView);
+
+    this.slideWithNav.getActiveIndex().then(index => {
+      console.log(index - 1);
+      if(index > 8){
+        index = (index % 7);
+      }
+      this.image = 'assets/img/e' + (index - 1) + '.png'
+   });
   }
 
   checkIfNavDisabled(object, slideView){
@@ -102,6 +141,52 @@ export class EnergyPage implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
+  saveData(){
+    //console.log(this.myForm.value);
+    this.contador = this.contador + 1;
+    console.log(this.contador);
+
+    this.arreglo = [[this.myForm.value.cantidad, this.myForm.value.horas, this.myForm.value.dias, this.image]];
+    this.lista = this.lista.concat(this.arreglo);
+
+    if(this.contador == 1){
+      this.i1 = this.lista[this.contador - 1][3];
+    }else if(this.contador == 2){
+      this.i2 = this.lista[this.contador - 1][3];
+    }else if(this.contador == 3){
+      this.i3 = this.lista[this.contador - 1][3];
+    }else if(this.contador == 4){
+      this.i4 = this.lista[this.contador - 1][3];
+    }else if(this.contador == 5){
+      this.i5 = this.lista[this.contador - 1][3];
+    }else if(this.contador == 6){
+      this.i6 = this.lista[this.contador - 1][3];
+    }else if(this.contador == 7){
+      this.i7 = this.lista[this.contador - 1][3];
+    }else if(this.contador == 8){
+      this.i8 = this.lista[this.contador - 1][3];
+    }else if(this.contador == 9){
+      this.i9 = this.lista[this.contador - 1][3];
+    }else if(this.contador == 10){
+      this.i10 = this.lista[this.contador - 1][3];
+    }else if(this.contador == 11){
+      this.i11 = this.lista[this.contador - 1][3];
+    }else if(this.contador == 12){
+      this.i12 = this.lista[this.contador - 1][3];
+    }else{
+      this.contador = this.contador - 1;
+    }
+
+  }
+
+  private createMyForm(){
+    return this.formBuilder.group({
+      cantidad: ['', Validators.required],
+      horas: ['', Validators.required],
+      dias: ['', Validators.required]
+    });
+  }
 }

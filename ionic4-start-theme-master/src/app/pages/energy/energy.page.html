@@ -17,30 +17,117 @@
 
 <ion-content padding>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col size="1">
-        <span class="slider-nav arrow-prev" (click)="slidePrev(slider, slideWithNav)">
-          <ion-img [src]="themeCover" class="arrow"></ion-img>
-        </span>
-      </ion-col>
+  <ion-row>
+    <ion-col size="1">
+      <ion-img [src]="i1" class="image-button3"></ion-img>
+    </ion-col>
+    <ion-col size="1">
+      <ion-img [src]="i2" class="image-button3"></ion-img>
+    </ion-col>
+    <ion-col size="1">
+      <ion-img [src]="i3" class="image-button3"></ion-img>
+    </ion-col>
+    <ion-col size="1">
+      <ion-img [src]="i4" class="image-button3"></ion-img>
+    </ion-col>
+    <ion-col size="1">
+      <ion-img [src]="i5" class="image-button3"></ion-img>
+    </ion-col>
+    <ion-col size="1">
+      <ion-img [src]="i6" class="image-button3"></ion-img>
+    </ion-col>
+    <ion-col size="1">
+      <ion-img [src]="i7" class="image-button3"></ion-img>
+    </ion-col>
+    <ion-col size="1">
+      <ion-img [src]="i8" class="image-button3"></ion-img>
+    </ion-col>
+    <ion-col size="1">
+      <ion-img [src]="i9" class="image-button3"></ion-img>
+    </ion-col>
+    <ion-col size="1">
+      <ion-img [src]="i10" class="image-button3"></ion-img>
+    </ion-col>
+    <ion-col size="1">
+      <ion-img [src]="i11" class="image-button3"></ion-img>
+    </ion-col>
+    <ion-col size="1">
+      <ion-img [src]="i12" class="image-button3"></ion-img>
+    </ion-col>
+  </ion-row>
 
-      <ion-col size="10">
-          <ion-slides pager="false" [options]="slide" #slideWithNav (ionSlideDidChange)="SlideDidChange(slider, slideWithNav)">
+
+  <ion-card class="bg-button espaciado4">
+    <ion-img [src]="image" class="image-button2"></ion-img>
+  </ion-card>
+
+  <ion-card class="bg-button espaciado3">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="1">
+          <span class="slider-nav arrow-prev" (click)="slidePrev(slider, slideWithNav)">
+            <ion-img [src]="themeCover" class="arrow"></ion-img>
+          </span>
+        </ion-col>
+
+        <ion-col size="10">
+          <ion-slides pager="false" [options]="slide" #slideWithNav (ionSlideDidChange)="slideDidChange(slider, slideWithNav)" (ionSlideDidChange)="printSome('g')">
             <ion-slide *ngFor="let s of slider.slidesItems">
               <img src="../../../assets/img/e{{s.id}}.png">
             </ion-slide>
           </ion-slides>
         </ion-col>
-      
-      <ion-col size="1">
-        <span class="slider-nav arrow-next" (click)="slideNext(slider, slideWithNav)">
-          <ion-img [src]="themeCover2" class="arrow"></ion-img>
-        </span>
-      </ion-col>
+        
+        <ion-col size="1">
+          <span class="slider-nav arrow-next" (click)="slideNext(slider, slideWithNav)">
+            <ion-img [src]="themeCover2" class="arrow"></ion-img>
+          </span>
+        </ion-col>
 
-    </ion-row>
-  </ion-grid>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <form [formGroup]="myForm" (ngSubmit)="saveData()">
+    <ion-list>
+      <ion-item>
+        <ion-icon name="calculator" item-start></ion-icon>
+        <ion-label stacked>Cantidad:</ion-label>
+        <ion-input formControlName="cantidad" type="number" placeholder="Cantidad"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="time" item-start></ion-icon>
+        <ion-label stacked>Horas de uso:</ion-label>
+        <ion-input formControlName="horas" type="number" placeholder="Horas"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="calendar" item-start></ion-icon>
+        <ion-label stacked>Días de uso al mes:</ion-label>
+        <ion-input formControlName="dias" type="number" placeholder="Dias al mes"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <div text-center>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="8">
+            <ion-button size="large" shape="round" color="light" tappable>
+              <ion-icon name="sunny" item-start></ion-icon>
+              Calcular
+            </ion-button>
+          </ion-col>
+  
+          <ion-col size="4">
+            <ion-button size="large" shape="round" color="success" [disabled]="!myForm.valid" (click)="saveData()" tappable>
+              <ion-icon name="add-circle-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </form>
 </ion-content>
 
 

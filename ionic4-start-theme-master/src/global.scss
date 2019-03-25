@@ -39,10 +39,18 @@ ion-item {
   }
 
   .espaciado {
-    margin: 15% 10% 10%;
+    margin: 10% 10% 5px 10%;
   }
   .espaciado2 {
-    margin: 15% 10% 10%;
+    margin: 10% 10% 10%;
+  }
+
+  .espaciado3 {
+    margin: 5% 1% 0px 1%;
+  }
+
+  .espaciado4 {
+    margin: 2% 35% 5px 35%;
   }
 
   .bg-white {
@@ -138,6 +146,42 @@ ion-item {
     margin-right: auto;
   }
 
+  .image-button2{
+    height: 100px;
+    width: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .image-button3{
+    height: 30px;
+    width: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .round {
+    border-radius: 50%;
+  }
+
+  .btn{
+    background-color: white;
+    color: black;
+    padding: 14px 28px;
+    cursor: pointer;
+  }
+
+  .otherBtn{
+    border-color: #4CAF50;
+    color: green;
+  }
+
+  .otherBtn:hover{
+    background-color: #4CAF50;
+    color: white;
+  }
   ion-toolbar.user-profile {
   
     .user-avatar {
