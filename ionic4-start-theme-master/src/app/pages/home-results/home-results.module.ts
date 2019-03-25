@@ -8,6 +8,8 @@ import { PopmenuComponent } from './../../components/popmenu/popmenu.component';
 
 import { HomeResultsPage } from './home-results.page';
 
+import { NavController } from '@ionic/angular';
+
 const routes: Routes = [
   {
     path: '',
@@ -25,4 +27,13 @@ const routes: Routes = [
   ],
   declarations: [HomeResultsPage, PopmenuComponent]
 })
-export class HomeResultsPageModule {}
+export class HomeResultsPageModule {
+
+  constructor(
+    public navCtrl: NavController,
+  ){}
+
+  goToEnergy() {
+    this.navCtrl.navigateRoot('/enery');
+  }
+}

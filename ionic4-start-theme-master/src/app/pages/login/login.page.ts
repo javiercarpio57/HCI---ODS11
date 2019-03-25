@@ -71,13 +71,7 @@ export class LoginPage implements OnInit {
             });
 
             loader.present();
-            loader.onWillDismiss().then(async l => {
-              const toast = await this.toastCtrl.create({
-                showCloseButton: true,
-                message: 'Email was sended successfully.',
-                duration: 3000,
-                position: 'bottom'
-              });
+          
 
               toast.present();
             });
@@ -89,7 +83,6 @@ export class LoginPage implements OnInit {
     await alert.present();
   }
 
-  // // //
   goToRegister() {
     this.navCtrl.navigateRoot('/register');
   }
@@ -118,7 +111,6 @@ export class LoginPage implements OnInit {
 
   resetPassword(email: string) {
     var auth = firebase.auth();
-
     return auth.sendPasswordResetEmail(email)
       .then(() => console.log("email sent"))
       .catch((error) => console.log(error))
