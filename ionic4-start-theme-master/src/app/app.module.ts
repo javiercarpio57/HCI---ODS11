@@ -19,6 +19,11 @@ import { SearchFilterPageModule } from './pages/modal/search-filter/search-filte
 import { NotificationsComponent } from './components/notifications/notifications.component';
 
 
+//firebase
+import firebaseConfig from './firebase'
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
 @NgModule({
   declarations: [AppComponent, NotificationsComponent],
   imports: [
@@ -28,7 +33,10 @@ import { NotificationsComponent } from './components/notifications/notifications
     AppRoutingModule,
     HttpClientModule,
     ImagePageModule,
-    SearchFilterPageModule
+    SearchFilterPageModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAuthModule
+    
   ],
   entryComponents: [NotificationsComponent],
   providers: [
@@ -38,5 +46,6 @@ import { NotificationsComponent } from './components/notifications/notifications
   ],
   bootstrap: [AppComponent]
 })
+
 
 export class AppModule {}

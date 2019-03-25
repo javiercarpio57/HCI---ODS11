@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, MenuController, LoadingController } from '@ionic/angular';
 
+import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from 'firebase/app';
+
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -10,11 +14,15 @@ import { NavController, MenuController, LoadingController } from '@ionic/angular
 export class RegisterPage implements OnInit {
   public onRegisterForm: FormGroup;
 
+  username: string = ""
+  password: string = ""
+
   constructor(
     public navCtrl: NavController,
     public menuCtrl: MenuController,
     public loadingCtrl: LoadingController,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public afAuth: AngularFireAuth
   ) { }
 
   ionViewWillEnter() {
@@ -36,6 +44,7 @@ export class RegisterPage implements OnInit {
   }
 
   async signUp() {
+
     const loader = await this.loadingCtrl.create({
       duration: 2000
     });
@@ -49,5 +58,15 @@ export class RegisterPage implements OnInit {
   // // //
   goToLogin() {
     this.navCtrl.navigateRoot('/');
+  }
+  async register() {
+    const {username, password} = this
+    try {
+      const res = await this.afAuth.auth.createUserWithEmailAndPassword(username, password)
+      this.navCtrl.navigateRoot('/home-results');
+      console.log(res)
+    } catch(err) {
+      console.dir(err)
+    }
   }
 }
