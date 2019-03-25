@@ -18,7 +18,7 @@
 
 <ion-content>
 
-  <ion-card class="bg-button espaciado">
+  <ion-card class="bg-button espaciado" (click)="goToBienvenida()">
     <ion-img [src]="themeCover" class="image-button"></ion-img>
     <ion-button expand="full" color="dark" no-margin>
       CALCULAR HUELLA DE CARBONO
@@ -31,10 +31,6 @@
       CÁLCULO ENERGÉTICO
     </ion-button>
   </ion-card>
-
-  <ion-button margin shape="round" expand="full" color="secondary" (click)="goToBienvenida()">
-    Modal 2: Search Filter
-  </ion-button>
   
 </ion-content>
   

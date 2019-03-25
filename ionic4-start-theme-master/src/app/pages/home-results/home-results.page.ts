@@ -43,6 +43,10 @@ export class HomeResultsPage {
     this.navCtrl.navigateForward('/energy');
   }
 
+  goToBienvenida() {
+    this.navCtrl.navigateForward('/bienvenida-test');
+  }
+
   async presentImage(image: any) {
     const modal = await this.modalCtrl.create({
       component: ImagePage,
@@ -50,19 +54,4 @@ export class HomeResultsPage {
     });
     return await modal.present();
   }
-
-  async notifications(ev: any) {
-    const popover = await this.popoverCtrl.create({
-      component: NotificationsComponent,
-      event: ev,
-      animated: true,
-      showBackdrop: true
-    });
-    return await popover.present();
-  }
-  goToBienvenida(){
-    this.navCtrl.navigateRoot('/bienvenida-test')
-  }
-
-
 }
