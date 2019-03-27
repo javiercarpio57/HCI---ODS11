@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NavController, MenuController, LoadingController } from '@ionic/angular';
+import { NavController, MenuController, LoadingController, AlertController} from '@ionic/angular';
 
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
@@ -20,6 +20,7 @@ export class RegisterPage implements OnInit {
   constructor(
     public navCtrl: NavController,
     public menuCtrl: MenuController,
+    public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     private formBuilder: FormBuilder,
     public afAuth: AngularFireAuth
@@ -66,7 +67,13 @@ export class RegisterPage implements OnInit {
       this.navCtrl.navigateRoot('/home-results');
       console.log(res)
     } catch(err) {
-      console.dir(err)
+      const alert = await this.alertCtrl.create({
+        header: '',
+        subHeader: '',
+        message: err.message,
+        buttons: ['OK']
+      });
+      return await alert.present();
     }
   }
 }
