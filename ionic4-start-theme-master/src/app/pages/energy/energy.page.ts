@@ -3,6 +3,10 @@ import {IonSlides, ModalController, NavController} from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 
 import { ImagePage } from './../modal/image/image.page';
+import { DeviceValidator } from '../energy/deviceValidatos';
+import { HourValidator } from '../energy/hourValidatos';
+import { DayValidator } from '../energy/dayValidatos';
+
 
 @Component({
   selector: 'app-energy',
@@ -38,7 +42,7 @@ export class EnergyPage implements OnInit {
 
   slide = {
     initialSlide: 0,
-    slidesPerView: 3,
+    slidesPerView: 1,
     loop: true
   };
 
@@ -115,11 +119,12 @@ export class EnergyPage implements OnInit {
     this.checkIfNavDisabled(object, slideView);
 
     this.slideWithNav.getActiveIndex().then(index => {
-      console.log(index - 1);
-      if(index > 8){
+      
+      if(index > 7){
         index = (index % 7);
       }
-      this.image = 'assets/img/e' + (index - 1) + '.png'
+      console.log(index);
+      this.image = 'assets/img/e' + (index) + '.png'
    });
   }
 
@@ -184,9 +189,9 @@ export class EnergyPage implements OnInit {
 
   private createMyForm(){
     return this.formBuilder.group({
-      cantidad: ['', Validators.required],
-      horas: ['', Validators.required],
-      dias: ['', Validators.required]
+      cantidad: ['', DeviceValidator.isValid],
+      horas: ['', HourValidator.isValid],
+      dias: ['', DayValidator.isValid]
     });
   }
 }

@@ -30,12 +30,22 @@ ion-item {
   font-size: 250%;
   color: #fdfdf6;
 }
+.titulo3 {
+  font-family: Titulo;
+  font-size: 200%;
+  color: #fdfdf6;
+}
 
 // backgrounds //
 
   .bg-button {
     background-color: #f5eee6;
     
+  }
+
+  .mensajeError{
+    font-size: 10px;
+    color: red;
   }
 
   .espaciado {
@@ -46,7 +56,7 @@ ion-item {
   }
 
   .espaciado3 {
-    margin: 5% 1% 0px 1%;
+    margin: 5% 30% 0px 30%;
   }
 
   .espaciado4 {
@@ -78,11 +88,11 @@ ion-item {
   }
   
   .bg-profile {
-    background-image: linear-gradient(135deg, var(--ion-color-dark), var(--ion-color-primary))
+    background-color: var(--ion-color-secondary);
   }
   
   .bg-main {
-      background-image: linear-gradient(-135deg, var(--ion-color-medium), var(--ion-color-light))
+    background-color: var(--ion-color-secondary);
   }
   
   // Helpers //
@@ -196,7 +206,7 @@ ion-item {
   // Custom toolbar (overriding Shadow DOM)
   ion-toolbar {
     &.ion-color-primary {
-      --ion-color-base: linear-gradient(135deg, var(--ion-color-dark), var(--ion-color-primary)) !important;
+      --ion-color-base: --ion-color-secondary !important;
     }
   }
   
@@ -209,7 +219,7 @@ ion-item {
   
   // style for auth pages
   .auth-page {
-    background-image: linear-gradient(135deg, var(--ion-color-dark), var(--ion-color-primary));
+    background-color: var(--ion-color-secondary);
   
     .grid {
       padding: 0;

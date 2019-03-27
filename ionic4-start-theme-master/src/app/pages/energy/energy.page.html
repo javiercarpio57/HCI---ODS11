@@ -13,7 +13,7 @@
 
   </ion-toolbar>
   
-  </ion-header>
+</ion-header>
 
 <ion-content padding>
 
@@ -56,58 +56,68 @@
     </ion-col>
   </ion-row>
 
+  <div>
+    <ion-card class="bg-button espaciado3">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="2">
+            <span class="slider-nav" (click)="slidePrev(slider, slideWithNav)">
+              <ion-icon name="arrow-round-back" size="medium"></ion-icon>
+            </span>
+          </ion-col>
 
-  <ion-card class="bg-button espaciado4">
-    <ion-img [src]="image" class="image-button2"></ion-img>
-  </ion-card>
+          <ion-col size="8">
+            <ion-slides pager="false" [options]="slide" #slideWithNav (ionSlideDidChange)="slideDidChange(slider, slideWithNav)" (ionSlideDidChange)="printSome('g')">
+              <ion-slide *ngFor="let s of slider.slidesItems">
+                <img src="../../../assets/img/e{{s.id}}.png">
+              </ion-slide>
+            </ion-slides>
+          </ion-col>
+          
+          <ion-col size="2">
+            <span class="slider-nav" (click)="slideNext(slider, slideWithNav)">
+              <ion-icon name="arrow-round-forward" size="medium"></ion-icon>
+            </span>
+          </ion-col>
 
-  <ion-card class="bg-button espaciado3">
-    <ion-grid>
-      <ion-row>
-        <ion-col size="1">
-          <span class="slider-nav arrow-prev" (click)="slidePrev(slider, slideWithNav)">
-            <ion-img [src]="themeCover" class="arrow"></ion-img>
-          </span>
-        </ion-col>
-
-        <ion-col size="10">
-          <ion-slides pager="false" [options]="slide" #slideWithNav (ionSlideDidChange)="slideDidChange(slider, slideWithNav)" (ionSlideDidChange)="printSome('g')">
-            <ion-slide *ngFor="let s of slider.slidesItems">
-              <img src="../../../assets/img/e{{s.id}}.png">
-            </ion-slide>
-          </ion-slides>
-        </ion-col>
-        
-        <ion-col size="1">
-          <span class="slider-nav arrow-next" (click)="slideNext(slider, slideWithNav)">
-            <ion-img [src]="themeCover2" class="arrow"></ion-img>
-          </span>
-        </ion-col>
-
-      </ion-row>
-    </ion-grid>
-  </ion-card>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+  </div>
 
   <form [formGroup]="myForm" (ngSubmit)="saveData()">
     <ion-list>
+
       <ion-item>
         <ion-icon name="calculator" item-start></ion-icon>
-        <ion-label stacked>Cantidad:</ion-label>
-        <ion-input formControlName="cantidad" type="number" placeholder="Cantidad"></ion-input>
+        <ion-label stacked>Cantidad de dispositivos:</ion-label>
+        <ion-input formControlName="cantidad" type="number" placeholder="Cantidad" [class.invalid]="!myForm.controls.cantidad.valid && (myForm.controls.cantidad.dirty || submitAttempt)"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="!myForm.controls.cantidad.valid && (myForm.controls.cantidad.dirty || submitAttempt)">
+        <p class="mensajeError">Ingrese una cantidad correcta.</p>
       </ion-item>
 
       <ion-item>
         <ion-icon name="time" item-start></ion-icon>
-        <ion-label stacked>Horas de uso:</ion-label>
-        <ion-input formControlName="horas" type="number" placeholder="Horas"></ion-input>
+        <ion-label stacked>Horas de uso por día:</ion-label>
+        <ion-input formControlName="horas" type="number" placeholder="Horas" [class.invalid]="!myForm.controls.horas.valid && (myForm.controls.horas.dirty || submitAttempt)"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="!myForm.controls.horas.valid && (myForm.controls.horas.dirty || submitAttempt)">
+        <p class="mensajeError">Ingrese una cantidad mayor a 0 y menor a 24.</p>
       </ion-item>
 
       <ion-item>
         <ion-icon name="calendar" item-start></ion-icon>
-        <ion-label stacked>Días de uso al mes:</ion-label>
-        <ion-input formControlName="dias" type="number" placeholder="Dias al mes"></ion-input>
+        <ion-label stacked>Días de uso al <br>mes en promedio:</ion-label>
+        <ion-input formControlName="dias" type="number" placeholder="Dias al mes" [class.invalid]="!myForm.controls.dias.valid && (myForm.controls.dias.dirty || submitAttempt)"></ion-input>
       </ion-item>
     </ion-list>
+
+    <ion-item *ngIf="!myForm.controls.dias.valid && (myForm.controls.dias.dirty || submitAttempt)">
+      <p class="mensajeError">Ingrese una cantidad mayor a 0 y menor 31.</p>
+    </ion-item>
 
     <div text-center>
       <ion-grid>

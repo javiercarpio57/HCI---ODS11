@@ -25,7 +25,13 @@
 .slider-nav{
     ion-icon{
         height: 100%;
+        vertical-align: middle;
     }
+}
+
+ion-slides{
+    width: 80px;
+    height: 80px;
 }
 
 .arrow{
