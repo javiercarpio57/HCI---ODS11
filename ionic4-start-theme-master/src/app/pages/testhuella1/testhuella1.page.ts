@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, AlertController } from '@ionic/angular';
+import { PassThrough } from 'stream';
+import { LineToLineMappedSource } from 'webpack-sources';
 
 @Component({
   selector: 'app-testhuella1',
@@ -7,16 +9,28 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./testhuella1.page.scss'],
 })
 export class Testhuella1Page implements OnInit {
-
+  public lines: number;
   constructor(
-    public navCtrl: NavController
-  ) { }
+    public navCtrl: NavController, public alertCtrl: AlertController
+  ) { 
+    this.lines = -1;
+  }
 
   ngOnInit() {
   }
+
+  actualizarResp1(): void{
+    console.log(this.lines+"1");
+  }
+  
   // // //
   goToNext2() {
-    this.navCtrl.navigateRoot('/testhuella2');
+    if(this.lines != -1){
+      this.navCtrl.navigateRoot('/testhuella2');
+    }
+    else{
+      console.log("Carajo");
+    }
   }
   goToBack() {
     this.navCtrl.navigateRoot('/bienvenida-test');

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, AlertController} from '@ionic/angular';
 
 @Component({
   selector: 'app-testhuella2',
@@ -7,12 +7,18 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./testhuella2.page.scss'],
 })
 export class Testhuella2Page implements OnInit {
-
+  public lines: number;
   constructor(
-    public navCtrl: NavController
-  ) { }
+    public navCtrl: NavController, public alertCtrl: AlertController
+  ) { 
+    this.lines = 0;
+  }
 
   ngOnInit() {
+  }
+
+  actualizarResp2(): void{
+    console.log(this.lines+"1");
   }
   // // //
   goToNext3() {

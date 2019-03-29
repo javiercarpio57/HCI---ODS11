@@ -19,28 +19,28 @@
   </div>
   <br/>
   <div>
-    <ion-list>
-      <ion-radio-group>
+    <ion-list [lines]=lines> 
+      <ion-radio-group [(ngModel)]="lines" (ionChange)="actualizarResp9()">
         <ion-list-header >
             <b><span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:25pt;">¿Cuánto te tardas en bañarte?</span></b>
         </ion-list-header>
         <ion-item>
           <br/>
           <ion-label><span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><p>Menos de 5 minutos.</p></span></ion-label>
-          <ion-radio value="cord"></ion-radio>
+          <ion-radio name="lines" value=5></ion-radio>
           <br/>
         </ion-item>
 
         <ion-item>
           <br/>
           <ion-label><span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><p>Entre 5 y 10 minutos.</p></span></ion-label>
-          <ion-radio value="duesenberg"></ion-radio>
+          <ion-radio name="lines" value=10></ion-radio>
           <br/>
         </ion-item>
         <ion-item>
           <br/>
           <ion-label><span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><p>Más de 10 minutos.</p></span></ion-label>
-          <ion-radio value="blabla"></ion-radio>
+          <ion-radio name="lines" value=15></ion-radio>
           <br/>
         </ion-item>
       </ion-radio-group>

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NavController, IonSlides } from '@ionic/angular';
 
 @Component({
   selector: 'app-bienvenida-test',
@@ -14,7 +14,6 @@ export class BienvenidaTestPage implements OnInit {
 
   ngOnInit() {
   }
-  
   goToNext1() {
     this.navCtrl.navigateRoot('/testhuella1');
   }

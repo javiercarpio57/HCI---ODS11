@@ -7,12 +7,17 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./testhuella4.page.scss'],
 })
 export class Testhuella4Page implements OnInit {
-
+  public lines: number;
   constructor(
     public navCtrl: NavController
-  ) { }
+  ) {
+    this.lines = 0;
+   }
 
   ngOnInit() {
+  }
+  actualizarResp4(): void{
+    console.log(this.lines+"1");
   }
   goToNext5() {
     this.navCtrl.navigateRoot('/testhuella5');
