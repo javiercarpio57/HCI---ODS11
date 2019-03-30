@@ -1,6 +1,6 @@
 :host {
     ion-content {
-        --background: --ion-color-secondary;
+        --background: va(--ion-color-secondary);
     }
 
     ion-list {
@@ -9,3 +9,8 @@
         }
     }
 }
+
+.menuPage {
+    color: black;
+}
+

@@ -28,7 +28,7 @@ ion-item {
 .titulo2 {
   font-family: Titulo;
   font-size: 250%;
-  color: #fdfdf6;
+  color: #ffffff;
 }
 .titulo3 {
   font-family: Titulo;
@@ -38,10 +38,21 @@ ion-item {
 
 // backgrounds //
 
-  .bg-button {
-    background-color: #f5eee6;
-    
+  .colorButton {
+    background-color: #ff8b00;
   }
+
+  .bg-button {
+    background-color: #444444;
+  }
+
+  .bg-card {
+    background-color: #fcf9f4;
+  }
+
+  .centro {
+    text-align: center;
+  } 
 
   .mensajeError{
     font-size: 10px;
@@ -49,14 +60,14 @@ ion-item {
   }
 
   .espaciado {
-    margin: 10% 10% 5px 10%;
+    margin: 15% 10% 5px 10%;
   }
   .espaciado2 {
     margin: 10% 10% 10%;
   }
 
   .espaciado3 {
-    margin: 5% 30% 0px 30%;
+    margin: 5% 30% 5% 30%;
   }
 
   .espaciado4 {
@@ -64,7 +75,7 @@ ion-item {
   }
 
   .bg-white {
-    background-color: #fff;
+    background-color: #feffdb;
   }
   
   .bg-light {
@@ -192,16 +203,6 @@ ion-item {
     background-color: #4CAF50;
     color: white;
   }
-  ion-toolbar.user-profile {
-  
-    .user-avatar {
-      width: 68px;
-      height: 68px;
-    }
-    .item-inner {
-      border-width: 0;
-    }
-  }
   
   // Custom toolbar (overriding Shadow DOM)
   ion-toolbar {
@@ -288,7 +289,7 @@ ion-item {
     ion-header {
       ion-toolbar {
         &.ion-color-dark {
-          --ion-color-base: linear-gradient(135deg, var(--ion-color-dark), var(--ion-color-primary)) !important;
+          --ion-color-base: var(--ion-color-menu) !important;
         }
       }
     }
@@ -299,4 +300,9 @@ ion-item {
     ion-icon {
       margin-bottom: -2px;
     }
+  }
+
+  .menu{
+    color: white;
+    font-size: 1rem;
   }
