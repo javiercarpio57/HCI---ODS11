@@ -30,6 +30,7 @@ export class TesthuellaresultadoPage implements OnInit {
   public energeticoPorcentaje = null;
   public contaminacionPorcentaje = null;
   public aguaPorcentaje = null;
+  public images1: any[] = [];
   constructor(
     public navCtrl: NavController, private activateRoute: ActivatedRoute
   ) { }
@@ -46,34 +47,86 @@ export class TesthuellaresultadoPage implements OnInit {
     this.passedId9 = this.activateRoute.snapshot.paramMap.get('myid45');
     
     //Aqui hare el calculo de tierras necesarias segun los resultados del test
+    this.calculoTierrasNecesarias();
+
+    //Aqui hare el calculo de los porcentajes en que contribuye cada actividad para la huella de carbono obtenida
+    this.calculoPorcentajes();
+  }
+
+  calculoTierrasNecesarias(){
     this.sumaPuntos = parseFloat(this.passedId1) + parseFloat(this.passedId2) + parseFloat(this.passedId3) + parseFloat(this.passedId4) + parseFloat(this.passedId5) + parseFloat(this.passedId6) + parseFloat(this.passedId7) + parseFloat(this.passedId8) + parseFloat(this.passedId9);
     if(this.sumaPuntos >= 500){
-      this.calculoTierras = '5 Planetas Tierra'
+      this.calculoTierras = '5 Planetas Tierra';
+      this.images1 = []
+      for (let i = 0; i < 5; i++){
+        this.images1.push('assets/img/planeta.png');
+      }
     }
     else if(this.sumaPuntos >= 450){
       this.calculoTierras =  '4 Planetas Tierra';
+      this.images1 = []
+      for (let i = 0; i < 4; i++){
+        this.images1.push('assets/img/planeta.png'
+        );
+      }
     }
     else if(this.sumaPuntos >= 400){
       this.calculoTierras = '3.5 Planetas Tierra';
-
+      this.images1 = []
+      for (let i = 0; i < 3; i++){
+        this.images1.push('assets/img/planeta.png'
+        );
+      }
+      this.images1.push('assets/img/medioplaneta.png'
+        );
     }
     else if(this.sumaPuntos >= 350){
       this.calculoTierras = '3 Planetas Tierra';
+      this.images1 = []
+      for (let i = 0; i < 3; i++){
+        this.images1.push('assets/img/planeta.png'
+        );
+      }
     }
     else if(this.sumaPuntos >= 300){
       this.calculoTierras = '2.5 Planetas Tierra';
+      this.images1 = []
+      for (let i = 0; i < 2; i++){
+        this.images1.push('assets/img/planeta.png'
+        );
+      }
+      this.images1.push('assets/img/medioplaneta.png'
+      );
     }
     else if(this.sumaPuntos >= 250){
       this.calculoTierras = '2 Planetas Tierra';
+      this.images1 = []
+      for (let i = 0; i < 2; i++){
+        this.images1.push('assets/img/planeta.png'
+        );
+      }
     }
     else if(this.sumaPuntos >= 200){
       this.calculoTierras = '1.5 Planetas Tierra';
+      this.images1 = []
+      for (let i = 0; i < 1; i++){
+        this.images1.push('assets/img/planeta.png'
+        );
+      }
+      this.images1.push('assets/img/medioplaneta.png'
+      );  
     }
     else{
       this.calculoTierras = '1 Planeta Tierra';
+      this.images1 = []
+      for (let i = 0; i < 1; i++){
+        this.images1.push('assets/img/planeta.png'
+        );
+      }
     }
+  }
 
-    //Aqui hare el calculo de los porcentajes en que contribuye cada actividad para la huella de carbono obtenida
+  calculoPorcentajes(){
     //Alimenticia
     this.sumaParcial = parseFloat(this.passedId1) + parseFloat(this.passedId2);
     this.alimentacion = this.sumaParcial/this.sumaPuntos;
