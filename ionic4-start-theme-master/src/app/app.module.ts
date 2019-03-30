@@ -33,6 +33,7 @@ import { Testhuella7PageModule } from './pages/testhuella7/testhuella7.module';
 import { Testhuella8PageModule } from './pages/testhuella8/testhuella8.module';
 import { Testhuella9PageModule } from './pages/testhuella9/testhuella9.module';
 import { TesthuellaresultadoPageModule } from './pages/testhuellaresultado/testhuellaresultado.module';
+import { CalculateEneryPageModule } from './pages/calculate-enery/calculate-enery.module';
 
 @NgModule({
   declarations: [AppComponent, NotificationsComponent],
@@ -55,7 +56,9 @@ import { TesthuellaresultadoPageModule } from './pages/testhuellaresultado/testh
     Testhuella7PageModule,
     Testhuella8PageModule,
     Testhuella9PageModule,
-    TesthuellaresultadoPageModule
+    TesthuellaresultadoPageModule,
+    CalculateEneryPageModule,
+
   ],
   entryComponents: [NotificationsComponent],
   providers: [

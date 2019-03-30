@@ -3,6 +3,11 @@ import {IonSlides, ModalController, NavController} from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 
 import { ImagePage } from './../modal/image/image.page';
+import { DeviceValidator } from '../energy/deviceValidatos';
+import { HourValidator } from '../energy/hourValidatos';
+import { DayValidator } from '../energy/dayValidatos';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-energy',
@@ -13,11 +18,17 @@ export class EnergyPage implements OnInit {
   myForm: FormGroup;
 
   @ViewChild('slideWithNav') slideWithNav: IonSlides;
+  @ViewChild('cantInput') cantInput;
   
   slider: any;
   themeCover = 'assets/img/leftArrow.png';
   themeCover2 = 'assets/img/rightArrow.png';
   image = 'assets/img/e2.png';
+  id = 0;
+  public availableImage = true;
+  public verifyImage = true;
+  public go = true;
+  consumo = 0;
 
   i1 = 'assets/img/transparent.png';
   i2 = 'assets/img/transparent.png';
@@ -38,7 +49,7 @@ export class EnergyPage implements OnInit {
 
   slide = {
     initialSlide: 0,
-    slidesPerView: 3,
+    slidesPerView: 1,
     loop: true
   };
 
@@ -48,7 +59,7 @@ export class EnergyPage implements OnInit {
     loop: true
   };
 
-  constructor(public modalCtrl: ModalController, private formBuilder: FormBuilder, public navCtrl: NavController) { 
+  constructor(public modalCtrl: ModalController, private formBuilder: FormBuilder, private navCtrl: NavController) { 
     this.myForm = this.createMyForm();
 
     this.slider = {
@@ -82,13 +93,33 @@ export class EnergyPage implements OnInit {
         {
           id: 7,
           image: 'assets/img/e7.png'
+        },
+        {
+          id: 8,
+          image: 'assets/img/e8.png'
+        },
+        {
+          id: 9,
+          image: 'assets/img/e9.png'
+        },
+        {
+          id: 10,
+          image: 'assets/img/e10.png'
+        },
+        {
+          id: 11,
+          image: 'assets/img/e1.png'
+        },
+        {
+          id: 12,
+          image: 'assets/img/e12.png'
         }
       ]
     };
   }
 
   printSome(some: string){
-    console.log("Holaaa " + some);
+
   }
 
   async presentImage(image: any) {
@@ -115,11 +146,13 @@ export class EnergyPage implements OnInit {
     this.checkIfNavDisabled(object, slideView);
 
     this.slideWithNav.getActiveIndex().then(index => {
-      console.log(index - 1);
-      if(index > 8){
-        index = (index % 7);
+      if(index == 13){
+        index = (index - 12);
+      }else if(index == 0){
+        index = 12;
       }
-      this.image = 'assets/img/e' + (index - 1) + '.png'
+      this.image = 'assets/img/e' + (index) + '.png'
+      this.id = index;
    });
   }
 
@@ -144,49 +177,156 @@ export class EnergyPage implements OnInit {
     
   }
 
-  saveData(){
-    //console.log(this.myForm.value);
-    this.contador = this.contador + 1;
-    console.log(this.contador);
-
-    this.arreglo = [[this.myForm.value.cantidad, this.myForm.value.horas, this.myForm.value.dias, this.image]];
-    this.lista = this.lista.concat(this.arreglo);
-
-    if(this.contador == 1){
-      this.i1 = this.lista[this.contador - 1][3];
-    }else if(this.contador == 2){
-      this.i2 = this.lista[this.contador - 1][3];
-    }else if(this.contador == 3){
-      this.i3 = this.lista[this.contador - 1][3];
-    }else if(this.contador == 4){
-      this.i4 = this.lista[this.contador - 1][3];
-    }else if(this.contador == 5){
-      this.i5 = this.lista[this.contador - 1][3];
-    }else if(this.contador == 6){
-      this.i6 = this.lista[this.contador - 1][3];
-    }else if(this.contador == 7){
-      this.i7 = this.lista[this.contador - 1][3];
-    }else if(this.contador == 8){
-      this.i8 = this.lista[this.contador - 1][3];
-    }else if(this.contador == 9){
-      this.i9 = this.lista[this.contador - 1][3];
-    }else if(this.contador == 10){
-      this.i10 = this.lista[this.contador - 1][3];
-    }else if(this.contador == 11){
-      this.i11 = this.lista[this.contador - 1][3];
-    }else if(this.contador == 12){
-      this.i12 = this.lista[this.contador - 1][3];
+  verify(){
+    if((this.myForm.value.cantidad == null) || (this.myForm.value.horas == null) || (this.myForm.value.dias == null)){
+      this.verifyImage = false;
     }else{
-      this.contador = this.contador - 1;
+      this.verifyImage = true;
+    }
+  }
+
+  imageEvaluate(){
+    var paso;
+    for(paso = 0; paso < this.lista.length; paso++){
+      if(this.id == this.lista[paso][4]){
+        this.availableImage = false;
+        break;
+      }else{
+        this.availableImage = true;
+      }
+    }
+  }
+
+  saveData(){
+    
+    this.verify();
+    
+    if(this.verifyImage){
+      this.imageEvaluate();
+      if(this.availableImage){
+        this.contador = this.contador + 1; 
+        this.arreglo = [[this.myForm.value.cantidad, this.myForm.value.horas, this.myForm.value.dias, this.image, this.id]];
+        this.lista = this.lista.concat(this.arreglo);
+
+        if(this.contador == 1){
+          this.i1 = this.lista[this.contador - 1][3];
+        }else if(this.contador == 2){
+          this.i2 = this.lista[this.contador - 1][3];
+        }else if(this.contador == 3){
+          this.i3 = this.lista[this.contador - 1][3];
+        }else if(this.contador == 4){
+          this.i4 = this.lista[this.contador - 1][3];
+        }else if(this.contador == 5){
+          this.i5 = this.lista[this.contador - 1][3];
+        }else if(this.contador == 6){
+          this.i6 = this.lista[this.contador - 1][3];
+        }else if(this.contador == 7){
+          this.i7 = this.lista[this.contador - 1][3];
+        }else if(this.contador == 8){
+          this.i8 = this.lista[this.contador - 1][3];
+        }else if(this.contador == 9){
+          this.i9 = this.lista[this.contador - 1][3];
+        }else if(this.contador == 10){
+          this.i10 = this.lista[this.contador - 1][3];
+        }else if(this.contador == 11){
+          this.i11 = this.lista[this.contador - 1][3];
+        }else if(this.contador == 12){
+          this.i12 = this.lista[this.contador - 1][3];
+        }else{
+          this.contador = this.contador - 1;
+        }
+        this.myForm.reset();
+      }
+    }
+  }
+
+  clickImage(name: string){
+    var paso;
+    var a;
+    if(name == 'i1'){
+      a = this.i1;
+    }else if(name == 'i2'){
+      a = this.i2;
     }
 
+    for(paso = 0; paso < this.lista.length; paso++){
+      if(a == this.lista[paso][3]){
+        console.log("Lo encontre");
+        break;
+      }else{
+        console.log("Todavia no");
+      }
+    }
   }
+
+  removeLast(){
+    var value = this.lista[this.lista.length - 1][4];
+
+    this.lista.pop();
+    this.contador = this.contador - 1;
+    if(this.contador == 0){
+      this.i1 = 'assets/img/transparent.png';
+    }else if(this.contador == 1){
+      this.i2 = 'assets/img/transparent.png';
+    }else if(this.contador == 2){
+      this.i3 = 'assets/img/transparent.png';
+    }else if(this.contador == 3){
+      this.i4 = 'assets/img/transparent.png';
+    }else if(this.contador == 4){
+      this.i5 = 'assets/img/transparent.png';
+    }else if(this.contador == 5){
+      this.i6 = 'assets/img/transparent.png';
+    }else if(this.contador == 6){
+      this.i7 = 'assets/img/transparent.png';
+    }else if(this.contador == 7){
+      this.i8 = 'assets/img/transparent.png';
+    }else if(this.contador == 8){
+      this.i9 = 'assets/img/transparent.png';
+    }else if(this.contador == 9){
+      this.i10 = 'assets/img/transparent.png';
+    }else if(this.contador == 10){
+      this.i11 = 'assets/img/transparent.png';
+    }else if(this.contador == 11){
+      this.i12 = 'assets/img/transparent.png';
+    }
+  }
+
+  goTo(){
+    if(this.lista.length == 0){
+      return false;
+    }else{
+      return true;
+    }
+  }
+
+  pushPage(){
+    this.navCtrl.navigateForward('/calculate-enery/' + this.kwh); 
+  }
+
+  goToCalculate() {
+    this.navCtrl.navigateRoot('/calculate-enery/');
+    this.calculoConsumo();
+    this.pushPage();
+    
+  }
+
+  private calculoConsumo(){
+    var a;
+    for(a = 0; a < this.lista.length; a++){
+      this.kwh += this.numConsumo[this.lista[a][4] - 1] * this.lista[a][0] * this.lista[a][1] * this.lista[a][2] / 30;
+      console.log(this.kwh);
+    }
+    console.log("Consumo: " + this.kwh);
+  }
+
+  kwh = 0;
+  numConsumo = [100, 60, 800, 150, 400, 4.83, 6, 1500, 600, 1500, 100, 400]
 
   private createMyForm(){
     return this.formBuilder.group({
-      cantidad: ['', Validators.required],
-      horas: ['', Validators.required],
-      dias: ['', Validators.required]
+      cantidad: ['', DeviceValidator.isValid],
+      horas: ['', HourValidator.isValid],
+      dias: ['', DayValidator.isValid]
     });
   }
 }
