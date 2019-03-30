@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, AlertController} from '@ionic/angular';
+import { NavController, AlertController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -27,6 +27,15 @@ export class Testhuella2Page implements OnInit {
     //console.log(this.lines);
   }
 
+  async alertaSeleccion(){
+    const alert = await this.alertCtrl.create({
+      header: 'Seleccion de Respuesta',
+      message: 'Debe de seleccionar una respuesta para poder continuar con el test.',
+      buttons: ['OK']
+    });
+    return await alert.present();
+  }
+
   pushPage(){
     this.navCtrl.navigateForward('/testhuella3/'+this.passedId1+'/'+this.lines);
   }
@@ -38,6 +47,7 @@ export class Testhuella2Page implements OnInit {
       this.pushPage();
     }
     else{
+      this.alertaSeleccion();
     }
   }
   goToBack1() {
