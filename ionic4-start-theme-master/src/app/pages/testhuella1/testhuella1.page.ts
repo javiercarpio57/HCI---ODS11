@@ -17,19 +17,22 @@ export class Testhuella1Page implements OnInit {
   }
 
   ngOnInit() {
+    this.lines = -1;
   }
 
   actualizarResp1(): void{
-    console.log(this.lines+"1");
+    console.log(this.lines);
   }
   
-  // // //
+  pushPage(){
+    this.navCtrl.navigateForward('/testhuella2/'+this.lines);
+  }
+
   goToNext2() {
     if(this.lines != -1){
-      this.navCtrl.navigateRoot('/testhuella2');
+      this.pushPage();
     }
     else{
-      console.log("Carajo");
     }
   }
   goToBack() {
