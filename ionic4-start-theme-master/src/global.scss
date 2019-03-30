@@ -19,11 +19,15 @@ ion-item {
   src: url(./assets/fonts/KodinahDiary.ttf)
 }
 
+@font-face {
+  font-family: otroTitulo;
+  src: url(./assets/fonts/FredokaOne-Regular.ttf)
+}
+
 .titulo {
   font-family: Titulo;
   font-size: 450%;
   color: #fdfdf6;
-  
 }
 .titulo2 {
   font-family: Titulo;
@@ -35,7 +39,16 @@ ion-item {
   font-size: 200%;
   color: #fdfdf6;
 }
+.titulo4 {
+  font-family: otroTitulo;
+  font-size: 150%;
+  color: #ffffff;
+}
 
+.textos {
+  text-align: justify;
+  color: black;
+}
 // backgrounds //
 
   .colorButton {
@@ -252,6 +265,7 @@ ion-item {
         border-radius: 10%;
         background: url("/assets/img/ionic4start-ico.png") no-repeat;
         background-size: 100%;
+
       }
   
       .list-form {

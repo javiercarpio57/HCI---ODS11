@@ -23,23 +23,23 @@ export class AppComponent {
   ) {
     this.appPages = [
       {
-        title: 'Home',
+        title: 'Menú principal',
         url: '/home-results',
         direct: 'root',
         icon: 'home'
       },
       {
-        title: 'About',
+        title: 'Acerca de Solars',
         url: '/about',
         direct: 'forward',
         icon: 'information-circle-outline'
       },
 
       {
-        title: 'App Settings',
+        title: 'Información general',
         url: '/settings',
         direct: 'forward',
-        icon: 'cog'
+        icon: 'contacts'
       }
     ];
 
