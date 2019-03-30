@@ -20,6 +20,8 @@ const routes: Routes = [
   { path: 'testhuella8', loadChildren: './pages/testhuella8/testhuella8.module#Testhuella8PageModule' },
   { path: 'testhuella9', loadChildren: './pages/testhuella9/testhuella9.module#Testhuella9PageModule' },
   { path: 'testhuellaresultado', loadChildren: './pages/testhuellaresultado/testhuellaresultado.module#TesthuellaresultadoPageModule' },
+  { path: 'calculate-enery/:myLista', loadChildren: './pages/calculate-enery/calculate-enery.module#CalculateEneryPageModule' },
+
 ];
 
 @NgModule({

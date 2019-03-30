@@ -23,6 +23,7 @@ import { NotificationsComponent } from './components/notifications/notifications
 import firebaseConfig from './firebase'
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { CalculateEneryPageModule } from './pages/calculate-enery/calculate-enery.module';
 
 @NgModule({
   declarations: [AppComponent, NotificationsComponent],
@@ -35,8 +36,9 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     ImagePageModule,
     SearchFilterPageModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule
-    
+    AngularFireAuthModule,
+    CalculateEneryPageModule,
+
   ],
   entryComponents: [NotificationsComponent],
   providers: [

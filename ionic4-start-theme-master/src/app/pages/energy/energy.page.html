@@ -1,129 +1,158 @@
-<ion-header>
+<ion-header class="bg-secondary">
   <ion-toolbar color="primary">
-    
     <ion-buttons slot="start">
-      <ion-menu-button color="secondary"></ion-menu-button>
+      <ion-menu-button color="bg-dark"></ion-menu-button>
     </ion-buttons>
-
     <ion-title>
         <ion-text color="light">
-          <ion-text color="light" class="fw700 titulo2">Solars<br></ion-text>
+          <ion-text color="light" class="fw700 titulo4">Cálculo energético<br></ion-text>
         </ion-text>
     </ion-title>
-
   </ion-toolbar>
-  
-  </ion-header>
+</ion-header>
 
 <ion-content padding>
 
+  <div>
+    <h5>Seleccione un dispositivo:</h5>
+    <ion-card class="bg-card espaciado3">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="2">
+            <span class="slider-nav" (click)="slidePrev(slider, slideWithNav)">
+              <ion-icon name="arrow-round-back" size="medium"></ion-icon>
+            </span>
+          </ion-col>
+
+          <ion-col size="8">
+            <ion-slides pager="false" [options]="slide" #slideWithNav (ionSlideDidChange)="slideDidChange(slider, slideWithNav)" (ionSlideDidChange)="printSome('g')">
+              <ion-slide *ngFor="let s of slider.slidesItems">
+                <img src="../../../assets/img/e{{s.id}}.png">
+              </ion-slide>
+            </ion-slides>
+          </ion-col>
+          
+          <ion-col size="2">
+            <span class="slider-nav" (click)="slideNext(slider, slideWithNav)">
+              <ion-icon name="arrow-round-forward" size="medium"></ion-icon>
+            </span>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+  </div>
+
   <ion-row>
-    <ion-col size="1">
+    <ion-col size="1" (click)="clickImage('i1')">
       <ion-img [src]="i1" class="image-button3"></ion-img>
     </ion-col>
-    <ion-col size="1">
+    <ion-col size="1" (click)="clickImage('i2')">
       <ion-img [src]="i2" class="image-button3"></ion-img>
     </ion-col>
-    <ion-col size="1">
+    <ion-col size="1" (click)="clickImage('i3')">
       <ion-img [src]="i3" class="image-button3"></ion-img>
     </ion-col>
-    <ion-col size="1">
+    <ion-col size="1" (click)="clickImage('i4')">
       <ion-img [src]="i4" class="image-button3"></ion-img>
     </ion-col>
-    <ion-col size="1">
+    <ion-col size="1" (click)="clickImage('i5')">
       <ion-img [src]="i5" class="image-button3"></ion-img>
     </ion-col>
-    <ion-col size="1">
+    <ion-col size="1" (click)="clickImage('i6')">
       <ion-img [src]="i6" class="image-button3"></ion-img>
     </ion-col>
-    <ion-col size="1">
+    <ion-col size="1" (click)="clickImage('i7')">
       <ion-img [src]="i7" class="image-button3"></ion-img>
     </ion-col>
-    <ion-col size="1">
+    <ion-col size="1" (click)="clickImage('i8')">
       <ion-img [src]="i8" class="image-button3"></ion-img>
     </ion-col>
-    <ion-col size="1">
+    <ion-col size="1" (click)="clickImage('i9')">
       <ion-img [src]="i9" class="image-button3"></ion-img>
     </ion-col>
-    <ion-col size="1">
+    <ion-col size="1" (click)="clickImage('i10')">
       <ion-img [src]="i10" class="image-button3"></ion-img>
     </ion-col>
-    <ion-col size="1">
+    <ion-col size="1" (click)="clickImage('i11')">
       <ion-img [src]="i11" class="image-button3"></ion-img>
     </ion-col>
-    <ion-col size="1">
+    <ion-col size="1" (click)="clickImage('i12')">
       <ion-img [src]="i12" class="image-button3"></ion-img>
     </ion-col>
   </ion-row>
 
-
-  <ion-card class="bg-button espaciado4">
-    <ion-img [src]="image" class="image-button2"></ion-img>
-  </ion-card>
-
-  <ion-card class="bg-button espaciado3">
-    <ion-grid>
-      <ion-row>
-        <ion-col size="1">
-          <span class="slider-nav arrow-prev" (click)="slidePrev(slider, slideWithNav)">
-            <ion-img [src]="themeCover" class="arrow"></ion-img>
-          </span>
-        </ion-col>
-
-        <ion-col size="10">
-          <ion-slides pager="false" [options]="slide" #slideWithNav (ionSlideDidChange)="slideDidChange(slider, slideWithNav)" (ionSlideDidChange)="printSome('g')">
-            <ion-slide *ngFor="let s of slider.slidesItems">
-              <img src="../../../assets/img/e{{s.id}}.png">
-            </ion-slide>
-          </ion-slides>
-        </ion-col>
-        
-        <ion-col size="1">
-          <span class="slider-nav arrow-next" (click)="slideNext(slider, slideWithNav)">
-            <ion-img [src]="themeCover2" class="arrow"></ion-img>
-          </span>
-        </ion-col>
-
-      </ion-row>
-    </ion-grid>
-  </ion-card>
-
   <form [formGroup]="myForm" (ngSubmit)="saveData()">
-    <ion-list>
+
+    <h5>Complete los siguientes campos:</h5>
+
+    <ion-list class="bg-light">
       <ion-item>
         <ion-icon name="calculator" item-start></ion-icon>
-        <ion-label stacked>Cantidad:</ion-label>
-        <ion-input formControlName="cantidad" type="number" placeholder="Cantidad"></ion-input>
+        <ion-label stacked>Cantidad de dispositivos:</ion-label>
+        <ion-input #cantInput formControlName="cantidad" type="number" placeholder="Cantidad" [class.invalid]="!myForm.controls.cantidad.valid && (myForm.controls.cantidad.dirty || submitAttempt)"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="!myForm.controls.cantidad.valid && (myForm.controls.cantidad.dirty || submitAttempt)">
+        <p class="mensajeError">Ingrese una cantidad correcta.</p>
       </ion-item>
 
       <ion-item>
         <ion-icon name="time" item-start></ion-icon>
-        <ion-label stacked>Horas de uso:</ion-label>
-        <ion-input formControlName="horas" type="number" placeholder="Horas"></ion-input>
+        <ion-label stacked>Horas de uso por día:</ion-label>
+        <ion-input #horaInput formControlName="horas" type="number" placeholder="Horas" [class.invalid]="!myForm.controls.horas.valid && (myForm.controls.horas.dirty || submitAttempt)"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="!myForm.controls.horas.valid && (myForm.controls.horas.dirty || submitAttempt)">
+        <p class="mensajeError">Ingrese una cantidad mayor a 0 y menor a 24.</p>
       </ion-item>
 
       <ion-item>
         <ion-icon name="calendar" item-start></ion-icon>
-        <ion-label stacked>Días de uso al mes:</ion-label>
-        <ion-input formControlName="dias" type="number" placeholder="Dias al mes"></ion-input>
+        <ion-label stacked>Días de uso al <br>mes en promedio:</ion-label>
+        <ion-input #diaInput formControlName="dias" type="number" placeholder="Dias al mes" [class.invalid]="!myForm.controls.dias.valid && (myForm.controls.dias.dirty || submitAttempt)"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="!myForm.controls.dias.valid && (myForm.controls.dias.dirty || submitAttempt)">
+        <p class="mensajeError">Ingrese una cantidad mayor a 0 y menor 31.</p>
       </ion-item>
     </ion-list>
 
+    <ion-item *ngIf="!availableImage">
+      <p class="mensajeError">Ya agregó este dispositivo.</p>
+    </ion-item>
+
+    <ion-item *ngIf="!verifyImage">
+      <p class="mensajeError">No ha llenado todos los campos.</p>
+    </ion-item>
+
+    <ion-item *ngIf="!go">
+      <p class="mensajeError">Debe tener por lo menos un dispositivo.</p>
+    </ion-item>
+
+    <br>
     <div text-center>
       <ion-grid>
         <ion-row>
-          <ion-col size="8">
-            <ion-button size="large" shape="round" color="light" tappable>
+          <ion-col size="6">
+            <ion-button size="large" shape="round" color="light" [disabled]="!goTo()" tappable (click)="goToCalculate()">
               <ion-icon name="sunny" item-start></ion-icon>
               Calcular
             </ion-button>
           </ion-col>
-  
-          <ion-col size="4">
+
+          <ion-col size="3">
+            <ion-button size="large" shape="round" color="danger" [disabled]="lista.length == 0" (click)="removeLast()" tappable>
+              <ion-icon name="remove-circle-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+
+          <ion-col size="3">
             <ion-button size="large" shape="round" color="success" [disabled]="!myForm.valid" (click)="saveData()" tappable>
               <ion-icon name="add-circle-outline"></ion-icon>
             </ion-button>
           </ion-col>
+
         </ion-row>
       </ion-grid>
     </div>
