@@ -27,7 +27,7 @@ export class Testhuella5Page implements OnInit {
     this.passedId4 = this.activateRoute.snapshot.paramMap.get('myid10');
   }
   actualizarResp5(): void{
-    console.log(this.lines);
+    //console.log(this.lines);
   }
   pushPageBack(){
     this.navCtrl.navigateBack('/testhuella4/'+this.passedId1+'/'+this.passedId2+'/'+this.passedId3);

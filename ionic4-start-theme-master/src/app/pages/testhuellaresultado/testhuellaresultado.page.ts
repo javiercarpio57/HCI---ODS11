@@ -18,8 +18,18 @@ export class TesthuellaresultadoPage implements OnInit {
   passedId8 = null;
   passedId9 = null;
   sumaPuntos = null;
-  calculoTierras = null;
-
+  sumaParcial = null;
+  public calculoTierras = null;
+  public alimentacion = null;
+  public transporte = null;
+  public energetico = null;
+  public contaminacion = null;
+  public agua = null;
+  public alimentacionPorcentaje = null;
+  public transportePorcentaje = null;
+  public energeticoPorcentaje = null;
+  public contaminacionPorcentaje = null;
+  public aguaPorcentaje = null;
   constructor(
     public navCtrl: NavController, private activateRoute: ActivatedRoute
   ) { }
@@ -38,32 +48,65 @@ export class TesthuellaresultadoPage implements OnInit {
     //Aqui hare el calculo de tierras necesarias segun los resultados del test
     this.sumaPuntos = parseFloat(this.passedId1) + parseFloat(this.passedId2) + parseFloat(this.passedId3) + parseFloat(this.passedId4) + parseFloat(this.passedId5) + parseFloat(this.passedId6) + parseFloat(this.passedId7) + parseFloat(this.passedId8) + parseFloat(this.passedId9);
     if(this.sumaPuntos >= 500){
-      console.log(this.sumaPuntos);
+      this.calculoTierras = '5 Planetas Tierra'
     }
     else if(this.sumaPuntos >= 450){
-      console.log(this.sumaPuntos)
+      this.calculoTierras =  '4 Planetas Tierra';
     }
     else if(this.sumaPuntos >= 400){
-      console.log(this.sumaPuntos)
+      this.calculoTierras = '3.5 Planetas Tierra';
+
     }
     else if(this.sumaPuntos >= 350){
-      console.log(this.sumaPuntos)
+      this.calculoTierras = '3 Planetas Tierra';
     }
     else if(this.sumaPuntos >= 300){
-      console.log(this.sumaPuntos)
+      this.calculoTierras = '2.5 Planetas Tierra';
     }
     else if(this.sumaPuntos >= 250){
-      console.log(this.sumaPuntos)
+      this.calculoTierras = '2 Planetas Tierra';
     }
     else if(this.sumaPuntos >= 200){
-      console.log(this.sumaPuntos)
+      this.calculoTierras = '1.5 Planetas Tierra';
     }
     else{
-      console.log(this.sumaPuntos)
+      this.calculoTierras = '1 Planeta Tierra';
     }
+
+    //Aqui hare el calculo de los porcentajes en que contribuye cada actividad para la huella de carbono obtenida
+    //Alimenticia
+    this.sumaParcial = parseFloat(this.passedId1) + parseFloat(this.passedId2);
+    this.alimentacion = this.sumaParcial/this.sumaPuntos;
+    this.alimentacionPorcentaje = (this.alimentacion * 100).toFixed(0).toString();
+    this.alimentacion = (this.alimentacion).toFixed(2).toString();
+
+    //Transporte
+    this.sumaParcial = parseFloat(this.passedId3);
+    this.transporte = this.sumaParcial/this.sumaPuntos;
+    this.transportePorcentaje = (this.transporte * 100).toFixed(0).toString();
+    this.transporte = (this.transporte).toFixed(2).toString();
+
+    //Gasto Energetico
+    this.sumaParcial = parseFloat(this.passedId5) + parseFloat(this.passedId6);
+    this.energetico = this.sumaParcial/this.sumaPuntos;
+    this.energeticoPorcentaje = (this.energetico * 100).toFixed(0).toString();
+    this.energetico = (this.energetico).toFixed(2).toString();
+
+    //Contaminacion
+    this.sumaParcial = parseFloat(this.passedId4) + parseFloat(this.passedId7);
+    this.contaminacion = this.sumaParcial/this.sumaPuntos;
+    this.contaminacionPorcentaje = (this.contaminacion * 100).toFixed(0).toString();
+    this.contaminacion = (this.contaminacion).toFixed(2).toString();
+
+    //Agua
+    this.sumaParcial = parseFloat(this.passedId8) + parseFloat(this.passedId9);
+    this.agua = this.sumaParcial/this.sumaPuntos;
+    this.aguaPorcentaje = (this.agua * 100).toFixed(0).toString();
+    this.agua = (this.agua).toFixed(2).toString();
   }
+
   goToMenuPrincipal() {
-    this.navCtrl.navigateRoot('/bienvenida-test');
+    this.navCtrl.navigateBack('/bienvenida-test');
   }
 }
 

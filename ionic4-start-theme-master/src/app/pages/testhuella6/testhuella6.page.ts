@@ -29,7 +29,7 @@ export class Testhuella6Page implements OnInit {
     this.passedId5 = this.activateRoute.snapshot.paramMap.get('myid15');
   }
   actualizarResp6(): void{
-    console.log(this.lines);
+    //console.log(this.lines);
   }
   pushPageBack(){
     this.navCtrl.navigateBack('/testhuella5/'+this.passedId1+'/'+this.passedId2+'/'+this.passedId3+'/'+this.passedId4);

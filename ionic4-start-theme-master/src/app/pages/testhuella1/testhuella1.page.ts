@@ -21,7 +21,7 @@ export class Testhuella1Page implements OnInit {
   }
 
   actualizarResp1(): void{
-    console.log(this.lines);
+    //console.log(this.lines);
   }
   
   pushPage(){
@@ -36,6 +36,6 @@ export class Testhuella1Page implements OnInit {
     }
   }
   goToBack() {
-    this.navCtrl.navigateRoot('/bienvenida-test');
+    this.navCtrl.navigateBack('/bienvenida-test');
   }
 }

@@ -15,9 +15,9 @@ export class BienvenidaTestPage implements OnInit {
   ngOnInit() {
   }
   goToNext1() {
-    this.navCtrl.navigateRoot('/testhuella1');
+    this.navCtrl.navigateForward('/testhuella1');
   }
   goToMenu() {
-    this.navCtrl.navigateRoot('/home-results');
+    this.navCtrl.navigateBack('/home-results');
   }
 }

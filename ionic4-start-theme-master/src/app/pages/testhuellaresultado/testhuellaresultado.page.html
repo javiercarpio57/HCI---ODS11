@@ -27,12 +27,14 @@
       que si todas las personas del mundo tuvieran los mismo hábitos que tú, entonces la cantidad de
       recursos necesarios para cubrir la demanda anual de estos sería equivalente a los recursos producidos por: <br/><br/>
     </p>
-    <p text-center>
-      <ion-text color="light">
-        <b><span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:20pt;background-color: rgb(58, 70, 138)">2 Planetas Tierra</span></b><br/>
-        <br/>
-      </ion-text>
-    </p>
+    <div>
+      <p text-center>
+        <ion-text color="light">
+          <b><span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:20pt;background-color: rgb(58, 70, 138)">{{ this.calculoTierras }}</span></b><br/>
+          <br/>
+        </ion-text>
+      </p>      
+    </div>
     <div>
       <img src="assets/img/planeta.png" class="center2"/><br/>
       <img src="assets/img/planeta.png" class="center2"/><br/>
@@ -45,35 +47,61 @@
     <div id="skills" class="information">
       <h2 style="text-align: center;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:20pt;"><b>Actividades que contribuyen al incremento de tu Huella de Carbono</b></h2>
       <ul>
-          <li style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:15pt;">Alimentacion</li>
+          <li style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:15pt;">Alimentacion: {{this.alimentacionPorcentaje}}%</li>
           <div class="progress">
-              <div class="progress-bar progress-bar-danger" style="width: 10%;">10%</div>
+            <ion-progress-bar value={{this.alimentacion}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.alimentacion}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.alimentacion}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.alimentacion}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.alimentacion}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.alimentacion}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.alimentacion}} color="warning"></ion-progress-bar>
           </div>
-          <li style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:15pt;">Desechos</li>
+          <li style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:15pt;">Transporte: {{this.transportePorcentaje}}%</li>
           <div class="progress">
-              <div class="progress-bar progress-bar-info" style="width: 10%;">10%</div>
+            <ion-progress-bar value={{this.transporte}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.transporte}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.transporte}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.transporte}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.transporte}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.transporte}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.transporte}} color="warning"></ion-progress-bar>
           </div>
-          <li style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:15pt;">Transporte</li>
+          <li style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:15pt;">Gasto Energético: {{this.energeticoPorcentaje}}%</li>
           <div class="progress">
-              <div class="progress-bar progress-bar-success" style="width: 25%;">25%</div>
+            <ion-progress-bar value={{this.energetico}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.energetico}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.energetico}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.energetico}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.energetico}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.energetico}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.energetico}} color="warning"></ion-progress-bar>
           </div>
-          <li style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:15pt;">Gasto Energético</li>
+          <li style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:15pt;">Contaminación: {{this.contaminacionPorcentaje}}%</li>
           <div class="progress">
-              <div class="progress-bar progress-bar-warning" style="width: 27%;">27%</div>
+            <ion-progress-bar value={{this.contaminacion}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.contaminacion}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.contaminacion}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.contaminacion}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.contaminacion}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.contaminacion}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.contaminacion}} color="warning"></ion-progress-bar>
           </div>
-          <li style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:15pt;">Contaminación</li>
+          <li style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:15pt;">Gasto de Agua: {{this.aguaPorcentaje}}%</li>
           <div class="progress">
-              <div class="progress-bar progress-bar-purple" style="width: 23%;">23%</div>
-          </div>
-          <li style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:15pt;">Gasto de Agua</li>
-          <div class="progress">
-              <div class="progress-bar progress-bar-yellow" style="width: 5%;">5%</div>
+            <ion-progress-bar value={{this.agua}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.agua}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.agua}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.agua}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.agua}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.agua}} color="warning"></ion-progress-bar>
+            <ion-progress-bar value={{this.agua}} color="warning"></ion-progress-bar>
           </div>
       </ul>
   </div>
   </div> 
   <div>
-    <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="goToMenuPrincipal()" [disabled]="!onLoginForm.valid" tappable>
+    <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="goToMenuPrincipal()" tappable>
       Volver a Iniciar el Test
     </ion-button>
   </div>  
