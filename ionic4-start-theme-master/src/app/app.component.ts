@@ -40,6 +40,12 @@ export class AppComponent {
         url: '/settings',
         direct: 'forward',
         icon: 'globe'
+      },
+      {
+        title: 'Estadísticas',
+        url: '/home-results',
+        direct: 'root',
+        icon: 'stats'
       }
     ];
 
