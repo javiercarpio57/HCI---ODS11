@@ -18,7 +18,7 @@
           <ion-icon name="mail" item-start></ion-icon>
           Full Name
         </ion-label>
-        <ion-input color="secondary" type="text" formControlName="fullName"></ion-input>
+        <ion-input color="secondary" type="text" formControlName="fullName" [(ngModel)]="fullName"></ion-input>
       </ion-item>
       <p ion-text class="text08" *ngIf="onRegisterForm.get('fullName').touched && onRegisterForm.get('fullName').hasError('required')">
         <ion-text color="warning">
