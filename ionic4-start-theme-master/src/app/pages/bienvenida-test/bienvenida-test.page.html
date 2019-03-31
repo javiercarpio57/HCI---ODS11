@@ -1,76 +1,95 @@
-<ion-header>
+<ion-header class="bg-secondary">
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-menu-button color="secondary"></ion-menu-button>
+      <ion-menu-button color="bg-dark"></ion-menu-button>
     </ion-buttons>
     <ion-title>
         <ion-text color="light">
-          <ion-text color="light" class="fw700 titulo3">Test de Huella Carbono</ion-text>
+          <ion-text color="light" class="fw700 titulo5">Test de la huella de carbono</ion-text>
         </ion-text>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="bg-main" padding>
+<ion-content padding>
   <div>
-    <p text-center>
-      <ion-text color="light">
-        <b><span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:25pt;background-color: rgb(58, 70, 138)">Bienvenido al test de huella de carbono</span></b><br/>
-        <br/>
+    <p text-center style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+      <ion-text color="dark">
+        <h1>Bienvenido al test de huella de carbono</h1>
       </ion-text>
     </p>
     <div>
-        <ion-slides mySlider pager="true" scrollbar="true">
-          <ion-slide>
-            <img src="assets/img/huellaCarbono2jpg.jpg">
-          </ion-slide>
-          <ion-slide>
-            <img src="assets/img/huellaCarbono-1.jpg"/>
-          </ion-slide>
-          <ion-slide>
-            <img src="assets/img/huella-carbono.jpg"/>
-          </ion-slide>
-        </ion-slides>
-        <br/>
-      </div>
-    <p text-left>
-        <ion-text color="light">
-          <b><span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:20pt;background-color: rgb(58, 70, 138)">¿Qué es la huella de carbono?</span></b><br/>
-          <br/>
-          </ion-text>
-      </p>
-    <p text-justify style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:15pt;">
+      <ion-slides #mySlider pager="true" (ionSlidesDidLoad)="slideDidLoad(mySlider)">
+        <ion-slide>
+          <img src="assets/img/huellaCarbono2jpg.jpg">
+        </ion-slide>
+        <ion-slide>
+          <img src="assets/img/huellaCarbono-1.jpg"/>
+        </ion-slide>
+        <ion-slide>
+          <img src="assets/img/huella-carbono.jpg"/>
+        </ion-slide>
+      </ion-slides>
+      <br/>
+    </div>
+
+
+    <p text-center style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+      <ion-text color="dark">
+        <h3>¿Qué es la Huella de Carbono?</h3>
+      </ion-text>
+    </p>
+    
+    <p class="text12 textos" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
         La huella de carbono es un indicador que permite conocer la totalidad de gases de efecto invernadero 
         que produce cada persona para el planeta. La huella de carbono se conoce como “la totalidad de gases 
-        de efecto invernadero (GEI) emitidos por efecto directo o indirecto de un individuo, organización, 
-        evento o producto”.<br/><br/>
+        de efecto invernadero (GEI) emitidos por efecto directo o indirecto de un individuo, organización. <br><br>
         
         La huella de carbono se mide en masa de CO2 
         equivalente, por lo cual una vez conocido el tamaño y la huella, es posible implementar una estrategia de reducción y/o 
-        compensación de emisiones, a través de la toma de nuevo hábitos.<br/><br/>
+        compensación de emisiones, a través de la toma de nuevo habitos.
     </p>
-    <p text-left>
-        <ion-text color="light">
-          <b><span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:20pt;background-color: rgb(58, 70, 138)">¿Cuál es el propósito de este test?</span></b><br/>
-          <br/>
-          </ion-text>
-    </p>
-    <p text-justify style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:15pt;">
-        A través de este test podremos determinar tu propia huella de carbono, basados en varios aspectos y actividades 
-        de tu vida diaria.<br/><br/>
 
-        Este test consta de 9 preguntas, las cuales recabaran datos para poder determinar tu huella de carbono y la cantidad 
-        de planetas Tierra que se necesitarían para cubrir la demanda de recursos a nivel mundial si toda la población tuviera los mismos
-        hábitos que tú.<br/><br/>
+    <br>
+
+    <p text-center style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+      <ion-text color="dark">
+        <h3>¿Cuál es el propósito de este Test?</h3>
+      </ion-text>
     </p>
-    <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="goToNext1()" tappable>
-      Iniciar Test
-    </ion-button>
+
+    <p class="text12 textos" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">
+      A través de este test podremos determinar tu propia huella de carbono, basados en varios aspectos y actividades 
+      de tu vida diaria<br><br>
+
+      Este test consta de 10 preguntas las cuales recabaran informacion para poder determinar tu huella de carbono y la cantidad 
+      de planetas tierra que se necesitarian para cubrir la demanda de recursos a nivel mundial si toda la poblacion tuviera los mismos
+      habitos que tú.    
+    </p>
+    
+    <br>
+
+    <div text-center>
+      <ion-grid>
+        <ion-row>
+
+          <ion-col size="6">
+            <ion-button size="medium" shape="round" color="medium" (click)="goToMenu()" tappable>
+              Regresar
+            </ion-button>
+          </ion-col>
+
+          <ion-col size="6">
+            <ion-button size="medium" shape="round" color="success" (click)="goToNext1()" tappable>
+              Iniciar test
+            </ion-button>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    
   </div> 
-  <div>
-    <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="goToMenu()" tappable>
-      Volver al Menú Inicial
-    </ion-button>
-  </div>  
 
 </ion-content>

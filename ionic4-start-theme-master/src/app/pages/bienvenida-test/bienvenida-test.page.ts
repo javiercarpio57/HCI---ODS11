@@ -14,6 +14,11 @@ export class BienvenidaTestPage implements OnInit {
 
   ngOnInit() {
   }
+
+  slideDidLoad(slides: IonSlides){
+    slides.startAutoplay();
+  }
+  
   goToNext1() {
     this.navCtrl.navigateForward('/testhuella1');
   }
