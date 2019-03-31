@@ -1,72 +1,81 @@
-<ion-header>
+<ion-header class="bg-secondary">
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
-      <ion-menu-button color="secondary"></ion-menu-button>
+      <ion-menu-button color="bg-dark"></ion-menu-button>
     </ion-buttons>
     <ion-title>
         <ion-text color="light">
-          <ion-text color="light" class="fw700">Pregunta 5 - Test Huella Carbono</ion-text>
+          <ion-text color="light" class="fw700 titulo4">Pregunta 5</ion-text>
         </ion-text>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content color="secondary" padding>
+<ion-content padding>
+
   <div>
     <ion-progress-bar color="primary" value="0.5"></ion-progress-bar>
     <ion-progress-bar color="primary" value="0.5"></ion-progress-bar>
     <ion-progress-bar color="primary" value="0.5"></ion-progress-bar>
   </div>
-  <br/>
+
   <div>
-    <ion-list [lines]=lines>
+    <ion-list class="bg-light" [lines]=lines>
       <ion-radio-group [(ngModel)]="lines" (ionChange)="actualizarResp5()">
+
         <ion-list-header >
-            <b><span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;font-size:25pt;">¿Qué tipo de calentador usas?</span></b>
+          <p text-center style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+            <ion-text color="dark">
+              <h1>¿Qué tipo de calentador usas?</h1>
+            </ion-text>
+          </p>
         </ion-list-header>
+
         <ion-item>
-          <br/>
           <ion-label><span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><p>Solar.</p></span></ion-label>
           <ion-radio name="lines" value=5></ion-radio>
-          <br/>
         </ion-item>
 
         <ion-item>
-          <br/>
           <ion-label><span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><p>De gas.</p></span></ion-label>
           <ion-radio name="lines" value=45></ion-radio>
-          <br/>
         </ion-item>
 
         <ion-item>
-          <br/>
           <ion-label><span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><p>Eléctrico.</p></span></ion-label>
           <ion-radio name="lines" value=20></ion-radio>
-          <br/>
         </ion-item>
 
         <ion-item>
-          <br/>
           <ion-label><span style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><p>No uso calentador.</p></span></ion-label>
           <ion-radio name="lines" value=0></ion-radio>
-          <br/>
         </ion-item>
       </ion-radio-group>
     </ion-list>
-    <br/>
   </div>
-  <div>
-      <img src="assets/img/calentadores.jpg" class="center"/>
+
+  <div padding>
+    <img src="assets/img/calentadores.jpg" class="center"/>
   </div>
-  <div>
-    <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="goToNext6()" tappable>
-      Siguiente Pregunta
-    </ion-button>
+
+  <div text-center>
+    <ion-grid>
+      <ion-row>
+
+        <ion-col size="6">
+          <ion-button size="medium" shape="round" color="danger" (click)="goToBack4()" tappable>
+            Regresar
+          </ion-button>
+        </ion-col>
+
+        <ion-col size="6">
+          <ion-button size="medium" shape="round" color="success" (click)="goToNext6()" tappable>
+              Siguiente
+            </ion-button>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
   </div>
-  <div>
-      <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="goToBack4()" tappable>
-        Pregunta Anterior
-      </ion-button>
-    </div> 
 
 </ion-content>

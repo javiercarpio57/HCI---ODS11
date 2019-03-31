@@ -36,10 +36,10 @@ export class AppComponent {
       },
 
       {
-        title: 'Información general',
+        title: 'Propósito de Solars',
         url: '/settings',
         direct: 'forward',
-        icon: 'contacts'
+        icon: 'globe'
       }
     ];
 
