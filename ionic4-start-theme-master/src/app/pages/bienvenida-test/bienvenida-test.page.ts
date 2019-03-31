@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { IonSlides, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-bienvenida-test',
@@ -13,6 +13,10 @@ export class BienvenidaTestPage implements OnInit {
   ) {}
 
   ngOnInit() {
+  }
+
+  slideDidLoad(slides: IonSlides){
+    slides.startAutoplay();
   }
   
   goToNext1() {

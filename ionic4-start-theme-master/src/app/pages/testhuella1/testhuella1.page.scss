@@ -2,6 +2,11 @@
     ion-progress-bar {
         --progress-background: #0da1ac;
     }
+
+    ion-content {
+        --background: var(--ion-color-light);
+    }
+    
 }
 .center {
     display: block;
