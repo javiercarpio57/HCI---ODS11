@@ -43,8 +43,8 @@ export class AppComponent {
       },
       {
         title: 'Estadísticas',
-        url: '/home-results',
-        direct: 'root',
+        url: '/graphics',
+        direct: 'forward',
         icon: 'stats'
       }
     ];
