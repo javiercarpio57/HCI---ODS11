@@ -31,12 +31,8 @@
     "@swimlane/ngx-charts": "^10.1.0",
     "chart.js": "^2.8.0",
     "core-js": "^2.5.4",
-<<<<<<< HEAD
-    "firebase": "^5.9.2",
-=======
     "d3": "^5.9.2",
     "firebase": "^5.9.1",
->>>>>>> b0c1437ab6997fc773daad3b9181f0414c122ce5
     "ionicons": "4.5.5",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.3",
