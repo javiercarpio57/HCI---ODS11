@@ -39,7 +39,7 @@ export class CalculateEneryPage implements OnInit {
     console.log("Este es mi correo: " + this.global.email);
 
     this.calculadora.email = this.global.email;
-    this.calculadora.consumoTotal = this.potenciaE;
+    this.calculadora.consumoTotal = this.datos;
     this.calculadora.paneles = this.cantPanel;
     this.calculadora.fecha = this.fecha.getDate() + '/' + this.fecha.getMonth() + '/' +this.fecha.getFullYear() + ' ' + this.fecha.getHours() + ':' +this.fecha.getMinutes() + ':' +this.fecha.getSeconds(); 
     this.saveCalculator();
