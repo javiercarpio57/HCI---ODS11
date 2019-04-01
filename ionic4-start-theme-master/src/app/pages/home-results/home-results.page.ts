@@ -26,6 +26,9 @@ import { GlobalService } from '../../services/global.service';
   styleUrls: ['./home-results.page.scss']
 })
 export class HomeResultsPage implements OnInit{
+  cualquierCosa: any[] = [];
+  nombre: string = "";
+
   searchKey = '';
   themeCover = 'assets/img/Calc1.png';
   themeCover2 = 'assets/img/Bulb3.png';
@@ -62,11 +65,21 @@ export class HomeResultsPage implements OnInit{
   ngOnInit() {
     this.global.idDoc = "Hola, soy Javier";
     this.username = this.route.snapshot.paramMap.get('usuario');
+    this.global.email = this.username;
+    console.log(this.global.email);
     this.usuarios = this.UsuarioService.getUsers();
 
     this.UsuarioService.getUser("YEBnCdZyEhM87oxTuTDH").subscribe(
-      element => {this.usuario = element;}
+      element => {
+        console.log(element.nombre.toString());
+        //this.cualquierCosa.push(element.nombre);
+        this.global.idDoc = element.nombre.toString()}
     )
+    
+    
+
+    //console.log("getUser: " + a);
+    console.log("User: " + this.usuarios);
     
     //console.log(this.usuario.email);
     this.usuarios.forEach(elment => {
@@ -80,9 +93,7 @@ export class HomeResultsPage implements OnInit{
     
     this.usuarios.subscribe(
       element => {
-        while (element.length > 0){
-          this.user.push(element.pop());
-        }
+        console.log("Usuarios: " + element);
       }
     )
     //console.log(this.usuario);
@@ -90,6 +101,7 @@ export class HomeResultsPage implements OnInit{
    // for (var i = 0; i < this.usuarios.subscribe.length; i++){
     //  this.
     //}  
+    this.printSome();
   }
 
   ionViewWillEnter() {
@@ -114,5 +126,9 @@ export class HomeResultsPage implements OnInit{
       componentProps: { value: image }
     });
     return await modal.present();
+  }
+
+  printSome(){
+    console.log("Nombre: " + this.global.idDoc);
   }
 }
