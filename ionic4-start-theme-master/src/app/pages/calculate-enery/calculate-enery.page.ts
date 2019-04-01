@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { NavController,LoadingController } from '@ionic/angular';
 import { GlobalService } from '../../services/global.service';
+import { calculadora, CalculadoraEnergeticaService } from 'src/app/services/calculadora-energetica.service';
 
 @Component({
   selector: 'app-calculate-enery',
@@ -14,7 +15,17 @@ export class CalculateEneryPage implements OnInit {
   potenciaE = null;
   cantPanel = null;
 
-  constructor(private route: ActivatedRoute, public navCtrl: NavController, public global: GlobalService) { }
+  calculadora : calculadora = {
+    email : ' ',
+    consumoTotal: 0,
+    paneles: 0
+  }
+  
+  constructor(private route: ActivatedRoute, 
+    public navCtrl: NavController, 
+    public global: GlobalService,
+    public loadingCtrl: LoadingController,
+    private CalculadoraEnergeticaService: CalculadoraEnergeticaService) { }
 
   ngOnInit() {
     this.datos = this.route.snapshot.paramMap.get('myLista');
@@ -24,6 +35,21 @@ export class CalculateEneryPage implements OnInit {
     this.cantPaneles();
     console.log("Calculo: " + this.datos);
     console.log(this.global.idDoc);
+    this.calculadora.email = this.global.email;
+    this.calculadora.consumoTotal = this.potenciaE;
+    this.calculadora.paneles = this.cantPanel;
+    this.saveCalculator();
+  }
+
+  async saveCalculator(){
+
+    const loading = await this.loadingCtrl.create({
+      message: 'Saving User'
+    });
+    await loading.present();
+    this.CalculadoraEnergeticaService.addcalculadora(this.calculadora).then(() => {
+      loading.dismiss();
+    });
   }
 
   potenciaElectrica(){

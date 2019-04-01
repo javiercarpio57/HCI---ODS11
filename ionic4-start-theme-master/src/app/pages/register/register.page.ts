@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, MenuController, LoadingController, AlertController} from '@ionic/angular';
-import {Usuario, UsuarioService} from './../../services/usuario.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ActivatedRoute } from '@angular/router';
+import { persona, PersonasService } from 'src/app/services/persona.service';
 
 
 @Component({
@@ -18,17 +18,9 @@ export class RegisterPage implements OnInit {
   password: string = ""
   fullName: string = ""
 
-  usuario : Usuario = {
+  persona : persona = {
     email : 'paulbelches@hotmail.com',
     nombre : 'Paul Belches' ,
-    cantidadDeTierras : 0,
-    porcentajeAlimentacion : 0,
-    porcentajeTransporte : 0,
-    porcentajeEnergetico : 0,
-    porcentajeContaminacion : 0,
-    porcentajeAgua : 0,
-    consumoTotal: 0,
-    paneles: 0
   }
 
   userId = null;
@@ -40,7 +32,7 @@ export class RegisterPage implements OnInit {
     public loadingCtrl: LoadingController,
     private formBuilder: FormBuilder,
     public afAuth: AngularFireAuth,
-    private usuarioService : UsuarioService,
+    private personaService: PersonasService,
     private route: ActivatedRoute
   ) { }
 
@@ -57,7 +49,7 @@ export class RegisterPage implements OnInit {
     if (this.userId){
 
     } else {
-      this.usuarioService.addUser(this.usuario).then(() => {
+      this.personaService.addpersona(this.persona).then(() => {
         loading.dismiss();
       });
     }
@@ -97,8 +89,8 @@ export class RegisterPage implements OnInit {
       const res = await this.afAuth.auth.createUserWithEmailAndPassword(username, password)
       this.navCtrl.navigateRoot('/home-results/');
       console.log(res)
-      this.usuario.email = username;
-      this.usuario.nombre = fullName;
+      this.persona.email = username;
+      this.persona.nombre = fullName;
       this.saveUser();
       this.pushPage();
 
