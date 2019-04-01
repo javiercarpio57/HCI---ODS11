@@ -100,7 +100,8 @@ export class LoginPage implements OnInit {
           }
         }, {
           text: 'Confirm',
-          handler: async () => {
+          handler: async data => {
+            this.resetPassword(data.email);
             //const loader = await this.loadingCtrl.create({
             //  duration: 2000
             //});
