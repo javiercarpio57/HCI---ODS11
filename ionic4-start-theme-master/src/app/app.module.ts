@@ -23,8 +23,23 @@ import { NotificationsComponent } from './components/notifications/notifications
 import firebaseConfig from './firebase'
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+<<<<<<< HEAD
 import { AngularFirestoreModule, DefaultFirestoreSettings, FirestoreSettingsToken } from '@angular/fire/firestore';
 import { HomeResultsPageModule } from './pages/home-results/home-results.module';
+=======
+import { Testhuella1PageModule } from './pages/testhuella1/testhuella1.module';
+import { Testhuella2PageModule } from './pages/testhuella2/testhuella2.module';
+import { Testhuella3PageModule } from './pages/testhuella3/testhuella3.module';
+import { Testhuella4PageModule } from './pages/testhuella4/testhuella4.module';
+import { Testhuella5PageModule } from './pages/testhuella5/testhuella5.module';
+import { Testhuella6PageModule } from './pages/testhuella6/testhuella6.module';
+import { Testhuella7PageModule } from './pages/testhuella7/testhuella7.module';
+import { Testhuella8PageModule } from './pages/testhuella8/testhuella8.module';
+import { Testhuella9PageModule } from './pages/testhuella9/testhuella9.module';
+import { TesthuellaresultadoPageModule } from './pages/testhuellaresultado/testhuellaresultado.module';
+import { CalculateEneryPageModule } from './pages/calculate-enery/calculate-enery.module';
+import { GlobalService } from './services/global.service';
+>>>>>>> b0c1437ab6997fc773daad3b9181f0414c122ce5
 
 @NgModule({
   declarations: [AppComponent, NotificationsComponent],
@@ -37,17 +52,37 @@ import { HomeResultsPageModule } from './pages/home-results/home-results.module'
     ImagePageModule,
     SearchFilterPageModule,
     AngularFireModule.initializeApp(firebaseConfig),
+<<<<<<< HEAD
     AngularFirestoreModule ,
     AngularFireAuthModule,
     HomeResultsPageModule
     
+=======
+    AngularFireAuthModule,
+    Testhuella1PageModule,
+    Testhuella2PageModule,
+    Testhuella3PageModule,
+    Testhuella4PageModule,
+    Testhuella5PageModule,
+    Testhuella6PageModule,
+    Testhuella7PageModule,
+    Testhuella8PageModule,
+    Testhuella9PageModule,
+    TesthuellaresultadoPageModule,
+    CalculateEneryPageModule,
+
+>>>>>>> b0c1437ab6997fc773daad3b9181f0414c122ce5
   ],
   entryComponents: [NotificationsComponent],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+<<<<<<< HEAD
     { provide: FirestoreSettingsToken, useValue: {} }
+=======
+    GlobalService
+>>>>>>> b0c1437ab6997fc773daad3b9181f0414c122ce5
   ],
   bootstrap: [AppComponent]
 })

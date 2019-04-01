@@ -1,94 +1,79 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>App Settings</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-header class="bg-secondary">
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>
+        <ion-text color="light">
+          <ion-text color="light" class="fw700 titulo4">Información general</ion-text>
+        </ion-text>
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+  
+    <div class="bg-profile">
+      <img src="assets/img/ods11.png">
+    </div>
+  
+    <ion-card class="bg-light" no-margin>
+      <ion-card-content>
+        <h1 margin-bottom>
+          <ion-text color="primary"><strong>Propósito de Solars</strong></ion-text>
+        </h1>
+        
+        <div class="textos">
+          <p margin-bottom>
+            La razón de la creación de Solaris va de la mano con el Objetivo 
+            de Desarrollo Sotenible (ODS) 11: Ciudades y Comunidades Sostenibles. 
+            Si bien, aunque el ODS se enfoca en transformar la forma en que 
+            se construyen y administran los espacios urbanos, la manera de 
+            poder administrar dichos espacios conlleva poder concientizar a 
+            las personas sobre su impacto en el desarrollo sostenible de las 
+            comunidades o ciudades. 
+            
+            <br><br>
+            
+            Solars tiene el propósito de crear esa 
+            concientización en la ciudadanía de manera que el desarrollo de 
+            estas comunidades sea factible y viable. De manera que si las 
+            personas pudieran conocer cómo sus hábitos impactan al planeta, 
+            estos pudieran cambiarlos y mejorar en los aspectos que más 
+            afectan al planeta, tal y como Solars plantea mostrar a través 
+            de su test de huella de carbono.
+            
+            <br><br>
+            
+            Por otro lado, Solaris también 
+            tiene el propósito de mostrar la cantidad de páneles solares que 
+            necesitaría cada persona según su consumo energético, para que 
+            así las personas puedan conocer sobre esta fuente de energía y,
+              en algunos casos, que la persona pudiera tener en mente la 
+              posibilidad de instalar y utilizar páneles solares en el futuro.
+              
+            <br><br>  
+            
+            Solars es una aplicación que tiene como objetivo hacer factible 
+            la administración de áreas urbanas, a tener ciudadanos más 
+            amigables con el medio ambiente, y haciendo factibles proyectos 
+            de urbanización futuros. Según el sitio oficial del ODS, las 
+            ciudades solo ocupan el 3% de la tierra, pero representan del 
+            60 al 80% del consumo de energía y el 75% de las emisiones de 
+            carbono. 
+            
+            <br><br>
 
-<ion-content>
-  <ion-item class="bg-profile">
-    <ion-avatar slot="start">
-      <img src="assets/img/avatar.jpeg" class="user-avatar">
-    </ion-avatar>
-    <ion-label>
-      <ion-text color="light">
-        <h2>
-          <strong>João Firmino</strong>
-        </h2>
-      </ion-text>
-      <ion-text color="tertiary">
-        <h3>
-          firminoata@gmail.com
-        </h3>
-      </ion-text>
-      <ion-button icon-left size="small" shape="round" color="dark" (click)="editProfile()">
-        <ion-icon name="contact"></ion-icon>
-        Edit profile
-      </ion-button>
-      <ion-button icon-left size="small" shape="round" color="secondary" (click)="logout()">
-        <ion-icon name="log-out"></ion-icon>
-        logout
-      </ion-button>
-    </ion-label>
-  </ion-item>
-
-  <ion-list no-border>
-    <ion-list-header>
-      <ion-text color="dark">
-        <h5>General</h5>
-      </ion-text>
-    </ion-list-header>
-    <ion-item>
-      <ion-icon name="settings" slot="start" color="primary"></ion-icon>
-      <ion-label color="primary">App Language</ion-label>
-      <ion-select [(ngModel)]="lang">
-        <ion-select-option *ngFor="let language of languages" [value]="language">{{language}}</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-icon name="notifications" slot="start" color="primary"></ion-icon>
-      <ion-label class="label" color="primary"> Enable notifications </ion-label>
-      <ion-toggle [(ngModel)]="enableNotifications"></ion-toggle>
-    </ion-item>
-  </ion-list>
-  <ion-list>
-    <ion-list-header>
-      <ion-text color="dark">
-        <h5>Currency</h5>
-      </ion-text>
-    </ion-list-header>
-    <ion-item>
-      <ion-icon name="card" slot="start" color="primary"></ion-icon>
-      <ion-label color="primary">Payment Method</ion-label>
-      <ion-select [(ngModel)]="paymentMethod">
-        <ion-select-option *ngFor="let method of paymentMethods" [value]="method">{{method}}</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-icon name="logo-usd" slot="start" color="dark"></ion-icon>
-      <ion-label color="primary">Currency</ion-label>
-      <ion-select [(ngModel)]="currency">
-        <ion-select-option *ngFor="let currency of currencies" [value]="currency">{{currency}}</ion-select-option>
-      </ion-select>
-    </ion-item>
-  </ion-list>
-  <ion-list>
-    <ion-list-header>
-      <ion-text color="dark">
-        <h5>Other</h5>
-      </ion-text>
-    </ion-list-header>
-    <ion-item>
-      <ion-icon name="mail" slot="start" color="primary"></ion-icon>
-      <ion-label class="label" color="primary">Enable Promotions</ion-label>
-      <ion-toggle [(ngModel)]="enablePromo"></ion-toggle>
-    </ion-item>
-    <ion-item>
-      <ion-icon name="mail" slot="start" color="primary"></ion-icon>
-      <ion-label class="label" color="primary">Enable History</ion-label>
-      <ion-toggle [(ngModel)]="enableHistory"></ion-toggle>
-    </ion-item>
-  </ion-list>
-</ion-content>
+            Además, 1.2 mil trabajos de urbanización dependen de 
+            un ambiente sano y estable, en lo cual contribuiría Solaris, 
+            gracias a las mejoras ambientales, gracias a los ciudadanos, 
+            que compensarían la gestión de dichos proyectos. 
+              
+          </p>
+        </div>
+        
+      </ion-card-content>
+    </ion-card>
+  
+  </ion-content>
+  

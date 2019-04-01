@@ -14,7 +14,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^7.2.2",
+    "@angular/animations": "^7.2.11",
     "@angular/common": "^7.2.2",
     "@angular/core": "^7.2.2",
     "@angular/fire": "^5.1.2",
@@ -28,10 +28,18 @@
     "@ionic-native/status-bar": "^5.0.0",
     "@ionic/angular": "^4.0.0",
     "@ionic/pro": "2.0.4",
+    "@swimlane/ngx-charts": "^10.1.0",
+    "chart.js": "^2.8.0",
     "core-js": "^2.5.4",
+<<<<<<< HEAD
     "firebase": "^5.9.2",
+=======
+    "d3": "^5.9.2",
+    "firebase": "^5.9.1",
+>>>>>>> b0c1437ab6997fc773daad3b9181f0414c122ce5
     "ionicons": "4.5.5",
     "rxjs": "~6.3.3",
+    "tslib": "^1.9.3",
     "zone.js": "~0.8.29"
   },
   "devDependencies": {

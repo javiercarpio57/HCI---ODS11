@@ -25,11 +25,29 @@
 .slider-nav{
     ion-icon{
         height: 100%;
+        vertical-align: middle;
     }
+}
+
+ion-slides{
+    width: 80px;
+    height: 80px;
 }
 
 .arrow{
     height: 100%;
     width: 100%;
     
+}
+
+:host {
+    ion-content {
+        --background: var(--ion-color-light);
+    }
+
+    ion-item {
+        border-radius: 0;
+        border-bottom: 1px dotted var(--ion-color-medium);
+    }
+
 }

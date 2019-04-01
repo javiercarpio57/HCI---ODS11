@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { Pages } from './interfaces/pages';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -23,23 +24,29 @@ export class AppComponent {
   ) {
     this.appPages = [
       {
-        title: 'Home',
+        title: 'Menú principal',
         url: '/home-results',
         direct: 'root',
         icon: 'home'
       },
       {
-        title: 'About',
+        title: 'Acerca de Solars',
         url: '/about',
         direct: 'forward',
         icon: 'information-circle-outline'
       },
 
       {
-        title: 'App Settings',
+        title: 'Propósito de Solars',
         url: '/settings',
         direct: 'forward',
-        icon: 'cog'
+        icon: 'globe'
+      },
+      {
+        title: 'Estadísticas',
+        url: '/graphics',
+        direct: 'forward',
+        icon: 'stats'
       }
     ];
 

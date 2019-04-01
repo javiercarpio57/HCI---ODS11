@@ -18,7 +18,7 @@ import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 import { stringify } from 'querystring';
 import { element } from '@angular/core/src/render3';
 import { userInfo } from 'os';
-
+import { GlobalService } from '../../services/global.service';
 
 @Component({
   selector: 'app-home-results',
@@ -54,12 +54,13 @@ export class HomeResultsPage implements OnInit{
     public modalCtrl: ModalController,
     public toastCtrl: ToastController,
     private route: ActivatedRoute,
-    private UsuarioService: UsuarioService
+    private UsuarioService: UsuarioService,
+    public global: GlobalService
   ) {
-
   }
   
   ngOnInit() {
+    this.global.idDoc = "Hola, soy Javier";
     this.username = this.route.snapshot.paramMap.get('usuario');
     this.usuarios = this.UsuarioService.getUsers();
 
@@ -103,6 +104,10 @@ export class HomeResultsPage implements OnInit{
     this.navCtrl.navigateForward('/energy');
   }
 
+  goToBienvenida() {
+    this.navCtrl.navigateForward('/bienvenida-test');
+  }
+
   async presentImage(image: any) {
     const modal = await this.modalCtrl.create({
       component: ImagePage,
@@ -110,7 +115,4 @@ export class HomeResultsPage implements OnInit{
     });
     return await modal.present();
   }
-
-
-
 }
