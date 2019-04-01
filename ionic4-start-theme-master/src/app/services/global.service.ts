@@ -8,5 +8,8 @@ export class GlobalService {
   public idDoc: string;
   public email: string;
   
-  constructor() { }
+  constructor() {
+    this.email = null;
+    this.idDoc = null;
+   }
 }
