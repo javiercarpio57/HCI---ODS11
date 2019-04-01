@@ -9,6 +9,7 @@ export interface calculadora {
   email : string;
   consumoTotal: number;
   paneles: number;
+  fecha: string;
 }
 @Injectable({
   providedIn: 'root'

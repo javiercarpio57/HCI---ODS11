@@ -14,11 +14,13 @@ export class CalculateEneryPage implements OnInit {
   datos = null;
   potenciaE = null;
   cantPanel = null;
+  fecha: Date = new Date();
 
   calculadora : calculadora = {
     email : ' ',
     consumoTotal: 0,
-    paneles: 0
+    paneles: 0,
+    fecha: ''
   }
   
   constructor(private route: ActivatedRoute, 
@@ -39,6 +41,7 @@ export class CalculateEneryPage implements OnInit {
     this.calculadora.email = this.global.email;
     this.calculadora.consumoTotal = this.potenciaE;
     this.calculadora.paneles = this.cantPanel;
+    this.calculadora.fecha = this.fecha.getDate() + '/' + this.fecha.getMonth() + '/' +this.fecha.getFullYear() + ' ' + this.fecha.getHours() + ':' +this.fecha.getMinutes() + ':' +this.fecha.getSeconds(); 
     this.saveCalculator();
   }
 
