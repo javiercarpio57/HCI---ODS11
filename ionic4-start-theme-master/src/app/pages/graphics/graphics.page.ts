@@ -5,6 +5,7 @@ import { persona, PersonasService } from '../../services/persona.service';
 import { calculadora, CalculadoraEnergeticaService } from 'src/app/services/calculadora-energetica.service';
 import { Observable } from 'rxjs';
 import { element } from '@angular/core/src/render3';
+import { Huella, HuellaCarbonoService } from 'src/app/services/huella-carbono.service';
 
 @Component({
   selector: 'app-graphics',
@@ -20,6 +21,8 @@ export class GraphicsPage implements OnInit {
   lineChart2: any;
 
   calculadora : Observable<calculadora[]>;
+  test: Observable<Huella[]>;
+  
   dates: any[] = [];
   earths: any[] = [];
 
@@ -28,7 +31,8 @@ export class GraphicsPage implements OnInit {
 
   constructor(public global: GlobalService, 
     private PersonasService: PersonasService,
-    private CalculadoraEnergeticaService: CalculadoraEnergeticaService) {
+    private CalculadoraEnergeticaService: CalculadoraEnergeticaService,
+    private HuellaCarbonoService: HuellaCarbonoService) {
     
     //this.dates.push("31/03/2019");
     //this.earths.push(5);
@@ -44,6 +48,16 @@ export class GraphicsPage implements OnInit {
   }
 
   ionViewWillEnter(){
+
+    this.test = this.HuellaCarbonoService.getHuellas();
+
+    this.test.forEach(element => {
+      element.forEach(elment => {
+        if(elment.email == this.global.email){
+          this.saveData2(elment.fecha, elment.cantidadDeTierras);
+        }
+      })
+    })
     
     this.calculadora = this.CalculadoraEnergeticaService.getcalculadoras();
     console.log("Acabo de entrar " + this.calculadora + " " + this.global.email);
@@ -64,6 +78,12 @@ export class GraphicsPage implements OnInit {
     console.log("hola");
   }
 
+  saveData2(fecha: string, tierra: number){
+    this.dates.push(fecha);
+    this.earths.push(tierra);
+    console.log("hola");
+  }
+
   ionViewDidEnter(){
     console.log("Holaaaaaaaaaaaa " + this.dates2.length);
     var a;
@@ -74,8 +94,6 @@ export class GraphicsPage implements OnInit {
 
     this.graphic();
     this.graphic2();
-
-    
   }
 
   ionViewDidLeave(){
