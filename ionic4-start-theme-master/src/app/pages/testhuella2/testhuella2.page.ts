@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 export class Testhuella2Page implements OnInit {
   public lines: number;
   passedId1 = null;
+  idDoc = 0;
 
   constructor(
     public navCtrl: NavController, public alertCtrl: AlertController,
@@ -37,7 +38,7 @@ export class Testhuella2Page implements OnInit {
   }
 
   pushPage(){
-    this.navCtrl.navigateForward('/testhuella3/'+this.passedId1+'/'+this.lines);
+    this.navCtrl.navigateForward('/testhuella3/'  +this.passedId1+'/'+this.lines);
   }
   pushPageBack(){
     this.navCtrl.navigateBack('/testhuella1');

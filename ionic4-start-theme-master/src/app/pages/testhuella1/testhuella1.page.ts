@@ -10,6 +10,8 @@ import { LineToLineMappedSource } from 'webpack-sources';
 })
 export class Testhuella1Page implements OnInit {
   public lines: number;
+  idDoc = 0;
+
   constructor(
     public navCtrl: NavController, public alertCtrl: AlertController
   ) { 
@@ -25,7 +27,7 @@ export class Testhuella1Page implements OnInit {
   }
   
   pushPage(){
-    this.navCtrl.navigateForward('/testhuella2/'+this.lines);
+    this.navCtrl.navigateForward('/testhuella2/' + this.lines);
   }
 
   async alertaSeleccion(){

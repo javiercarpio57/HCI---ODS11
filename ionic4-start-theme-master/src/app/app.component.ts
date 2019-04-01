@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { Pages } from './interfaces/pages';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',

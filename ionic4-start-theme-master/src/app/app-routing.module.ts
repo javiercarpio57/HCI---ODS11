@@ -20,7 +20,8 @@ const routes: Routes = [
   { path: 'testhuella8/:myid22/:myid23/:myid24/:myid25/:myid26/:myid27/:myid28', loadChildren: './pages/testhuella8/testhuella8.module#Testhuella8PageModule' },
   { path: 'testhuella9/:myid29/:myid30/:myid31/:myid32/:myid33/:myid34/:myid35/:myid36', loadChildren: './pages/testhuella9/testhuella9.module#Testhuella9PageModule' },
   { path: 'testhuellaresultado/:myid37/:myid38/:myid39/:myid40/:myid41/:myid42/:myid43/:myid44/:myid45', loadChildren: './pages/testhuellaresultado/testhuellaresultado.module#TesthuellaresultadoPageModule' },
-  { path: 'calculate-enery/:myLista', loadChildren: './pages/calculate-enery/calculate-enery.module#CalculateEneryPageModule' },  { path: 'graphics', loadChildren: './pages/graphics/graphics.module#GraphicsPageModule' },
+  { path: 'calculate-enery/:myLista', loadChildren: './pages/calculate-enery/calculate-enery.module#CalculateEneryPageModule' },
+  { path: 'graphics', loadChildren: './pages/graphics/graphics.module#GraphicsPageModule' },
 
 
 ];

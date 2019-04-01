@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   NavController,
   AlertController,
@@ -9,13 +9,14 @@ import {
 
 // Modals
 import { ImagePage } from './../modal/image/image.page';
+import { GlobalService } from '../../services/global.service';
 
 @Component({
   selector: 'app-home-results',
   templateUrl: './home-results.page.html',
   styleUrls: ['./home-results.page.scss']
 })
-export class HomeResultsPage {
+export class HomeResultsPage implements OnInit{
   searchKey = '';
   themeCover = 'assets/img/Calc1.png';
   themeCover2 = 'assets/img/Bulb3.png';
@@ -26,9 +27,13 @@ export class HomeResultsPage {
     public popoverCtrl: PopoverController,
     public alertCtrl: AlertController,
     public modalCtrl: ModalController,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    public global: GlobalService
   ) {
+  }
 
+  ngOnInit(){
+    this.global.idDoc = "Hola, soy Javier";
   }
 
   ionViewWillEnter() {

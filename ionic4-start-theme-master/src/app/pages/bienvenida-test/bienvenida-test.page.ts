@@ -8,6 +8,8 @@ import { NavController, IonSlides } from '@ionic/angular';
 })
 export class BienvenidaTestPage implements OnInit {
 
+  idDoc = 0;
+
   constructor(
     public navCtrl: NavController
   ) {}
@@ -23,6 +25,7 @@ export class BienvenidaTestPage implements OnInit {
     this.navCtrl.navigateForward('/testhuella1');
   }
   goToMenu() {
-    this.navCtrl.navigateBack('/home-results');
+    //this.pushPage('/home-results/');
+    this.navCtrl.navigateBack('/home-results/');
   }
 }

@@ -14,6 +14,8 @@ export class Testhuella6Page implements OnInit {
   passedId3 = null;
   passedId4 = null;
   passedId5 = null;
+  idDoc = 0;
+
   constructor(
     public navCtrl: NavController, private activateRoute: ActivatedRoute,
     public alertCtrl: AlertController
@@ -41,10 +43,10 @@ export class Testhuella6Page implements OnInit {
     return await alert.present();
   }
   pushPageBack(){
-    this.navCtrl.navigateBack('/testhuella5/'+this.passedId1+'/'+this.passedId2+'/'+this.passedId3+'/'+this.passedId4);
+    this.navCtrl.navigateBack('/testhuella5/' +this.passedId1+'/'+this.passedId2+'/'+this.passedId3+'/'+this.passedId4);
   }
   pushPage(){
-    this.navCtrl.navigateForward('/testhuella7/'+this.passedId1+'/'+this.passedId2+'/'+this.passedId3+'/'+this.passedId4+'/'+this.passedId5+'/'+this.lines);
+    this.navCtrl.navigateForward('/testhuella7/'  +this.passedId1+'/'+this.passedId2+'/'+this.passedId3+'/'+this.passedId4+'/'+this.passedId5+'/'+this.lines);
   }
   goToNext7() {
     if(this.lines != -1){

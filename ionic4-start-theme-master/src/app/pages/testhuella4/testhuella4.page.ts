@@ -12,6 +12,7 @@ export class Testhuella4Page implements OnInit {
   passedId1 = null;
   passedId2 = null;
   passedId3 = null;
+  idDOc = 0;
 
   constructor(
     public navCtrl: NavController, private activateRoute: ActivatedRoute,
@@ -38,10 +39,10 @@ export class Testhuella4Page implements OnInit {
     return await alert.present();
   }
   pushPageBack(){
-    this.navCtrl.navigateBack('/testhuella3/'+this.passedId1+'/'+this.passedId2);
+    this.navCtrl.navigateBack('/testhuella3/' +this.passedId1+'/'+this.passedId2);
   }
   pushPage(){
-    this.navCtrl.navigateForward('/testhuella5/'+this.passedId1+'/'+this.passedId2+'/'+this.passedId3+'/'+this.lines);
+    this.navCtrl.navigateForward('/testhuella5/' +this.passedId1+'/'+this.passedId2+'/'+this.passedId3+'/'+this.lines);
   }
   goToNext5() {
     if(this.lines != -1){

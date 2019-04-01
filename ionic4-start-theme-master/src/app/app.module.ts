@@ -34,6 +34,7 @@ import { Testhuella8PageModule } from './pages/testhuella8/testhuella8.module';
 import { Testhuella9PageModule } from './pages/testhuella9/testhuella9.module';
 import { TesthuellaresultadoPageModule } from './pages/testhuellaresultado/testhuellaresultado.module';
 import { CalculateEneryPageModule } from './pages/calculate-enery/calculate-enery.module';
+import { GlobalService } from './services/global.service';
 
 @NgModule({
   declarations: [AppComponent, NotificationsComponent],
@@ -64,7 +65,8 @@ import { CalculateEneryPageModule } from './pages/calculate-enery/calculate-ener
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    GlobalService
   ],
   bootstrap: [AppComponent]
 })

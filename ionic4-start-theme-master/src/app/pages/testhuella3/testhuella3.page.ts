@@ -11,6 +11,7 @@ export class Testhuella3Page implements OnInit {
   public lines: number;
   passedId1 = null;
   passedId2 = null;
+  idDoc = 0;
 
   constructor(
     public navCtrl: NavController, private activateRoute: ActivatedRoute,
@@ -26,11 +27,11 @@ export class Testhuella3Page implements OnInit {
   }
 
   pushPageBack(){
-    this.navCtrl.navigateBack('/testhuella2/'+this.passedId1);
+    this.navCtrl.navigateBack('/testhuella2/' + this.passedId1);
   }
 
   pushPage(){
-    this.navCtrl.navigateForward('/testhuella4/'+this.passedId1+'/'+this.passedId2+'/'+this.lines);
+    this.navCtrl.navigateForward('/testhuella4/' +  this.passedId1+'/'+this.passedId2+'/'+this.lines);
   }
 
   actualizarResp3(): void{

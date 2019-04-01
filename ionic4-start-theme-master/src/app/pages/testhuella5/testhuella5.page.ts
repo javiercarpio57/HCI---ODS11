@@ -13,6 +13,8 @@ export class Testhuella5Page implements OnInit {
   passedId2 = null;
   passedId3 = null;
   passedId4 = null;
+  idDoc = 0;
+
   constructor(
     public navCtrl: NavController, private activateRoute: ActivatedRoute,
     public alertCtrl: AlertController
@@ -39,7 +41,7 @@ export class Testhuella5Page implements OnInit {
     return await alert.present();
   }
   pushPageBack(){
-    this.navCtrl.navigateBack('/testhuella4/'+this.passedId1+'/'+this.passedId2+'/'+this.passedId3);
+    this.navCtrl.navigateBack('/testhuella4/'  +this.passedId1+'/'+this.passedId2+'/'+this.passedId3);
   }
   pushPage(){
     this.navCtrl.navigateForward('/testhuella6/'+this.passedId1+'/'+this.passedId2+'/'+this.passedId3+'/'+this.passedId4+'/'+this.lines);

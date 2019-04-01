@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Chart } from 'chart.js';
+import { GlobalService } from 'src/app/services/global.service';
 
 @Component({
   selector: 'app-graphics',
@@ -20,7 +21,7 @@ export class GraphicsPage implements OnInit {
   dates2: any[] = [];
   paneles: any[] = [];
 
-  constructor() {
+  constructor(public global: GlobalService) {
     
     //this.dates.push("31/03/2019");
     //this.earths.push(5);
@@ -30,6 +31,7 @@ export class GraphicsPage implements OnInit {
    }
 
   ngOnInit() {
+    console.log(this.global.idDoc);
     this.graphic();
     this.graphic2();
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { GlobalService } from '../../services/global.service';
 
 @Component({
   selector: 'app-calculate-enery',
@@ -13,7 +14,7 @@ export class CalculateEneryPage implements OnInit {
   potenciaE = null;
   cantPanel = null;
 
-  constructor(private route: ActivatedRoute, public navCtrl: NavController) { }
+  constructor(private route: ActivatedRoute, public navCtrl: NavController, public global: GlobalService) { }
 
   ngOnInit() {
     this.datos = this.route.snapshot.paramMap.get('myLista');
@@ -22,6 +23,7 @@ export class CalculateEneryPage implements OnInit {
     this.potenciaElectrica();
     this.cantPaneles();
     console.log("Calculo: " + this.datos);
+    console.log(this.global.idDoc);
   }
 
   potenciaElectrica(){

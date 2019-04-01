@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
+import { GlobalService } from '../../services/global.service';
 
 @Component({
   selector: 'app-testhuellaresultado',
@@ -32,7 +33,7 @@ export class TesthuellaresultadoPage implements OnInit {
   public aguaPorcentaje = null;
   public images1: any[] = [];
   constructor(
-    public navCtrl: NavController, private activateRoute: ActivatedRoute
+    public navCtrl: NavController, private activateRoute: ActivatedRoute, public global: GlobalService
   ) { }
 
   ngOnInit() {
@@ -51,6 +52,7 @@ export class TesthuellaresultadoPage implements OnInit {
 
     //Aqui hare el calculo de los porcentajes en que contribuye cada actividad para la huella de carbono obtenida
     this.calculoPorcentajes();
+    console.log(this.global.idDoc);
   }
 
   calculoTierrasNecesarias(){
