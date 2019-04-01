@@ -8,6 +8,7 @@ import { auth } from 'firebase/app';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, MenuController, ToastController, AlertController, LoadingController } from '@ionic/angular';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -26,7 +27,7 @@ export class LoginPage implements OnInit {
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
     private formBuilder: FormBuilder,
-    public afAuth: AngularFireAuth
+    public afAuth: AngularFireAuth,
   ) { }
 
   ionViewWillEnter() {
@@ -91,7 +92,6 @@ export class LoginPage implements OnInit {
 }
 
   goToRegister() {
-    console.log('Verga')
     this.navCtrl.navigateRoot('/register');
   }
 
@@ -104,7 +104,8 @@ export class LoginPage implements OnInit {
     try {
       const res = await this.afAuth.auth.signInWithEmailAndPassword(username, password)
       console.log(res)
-      this.navCtrl.navigateRoot('/home-results');
+      this.navCtrl.navigateRoot('/home-results/');
+      this.pushPage();
     } catch(err) {
       console.dir(err.message)
       const alert = await this.alertCtrl.create({
@@ -122,5 +123,9 @@ export class LoginPage implements OnInit {
     return auth.sendPasswordResetEmail(email)
       .then(() => console.log("email sent"))
       .catch((error) => console.log(error))
+  }
+
+  pushPage(){
+    this.navCtrl.navigateForward('/home-results/' + this.username);
   }
 }

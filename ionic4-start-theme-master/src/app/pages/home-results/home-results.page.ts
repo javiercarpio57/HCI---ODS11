@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 import {
   NavController,
   AlertController,
@@ -9,26 +12,83 @@ import {
 
 // Modals
 import { ImagePage } from './../modal/image/image.page';
+import { Usuario, UsuarioService } from 'src/app/services/usuario.service';
+import { Observable } from 'rxjs';
+import { UseExistingWebDriver } from 'protractor/built/driverProviders';
+import { stringify } from 'querystring';
+import { element } from '@angular/core/src/render3';
+import { userInfo } from 'os';
+
 
 @Component({
   selector: 'app-home-results',
   templateUrl: './home-results.page.html',
   styleUrls: ['./home-results.page.scss']
 })
-export class HomeResultsPage {
+export class HomeResultsPage implements OnInit{
   searchKey = '';
   themeCover = 'assets/img/Calc1.png';
   themeCover2 = 'assets/img/Bulb3.png';
+  username = null;
+  key : string = "";
+  usuarios : Observable<Usuario[]>;
+  user: Usuario[] = [];
+  usuario : Usuario = {
+    email : 'no papi',
+    nombre : 'Paul Belches' ,
+    cantidadDeTierras : 0,
+    porcentajeAlimentacion : 0,
+    porcentajeTransporte : 0,
+    porcentajeEnergetico : 0,
+    porcentajeContaminacion : 0,
+    porcentajeAgua : 0,
+    consumoTotal: 0,
+    paneles: 0
+  }
 
-  constructor(
+  constructor (
     public navCtrl: NavController,
     public menuCtrl: MenuController,
     public popoverCtrl: PopoverController,
     public alertCtrl: AlertController,
     public modalCtrl: ModalController,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    private route: ActivatedRoute,
+    private UsuarioService: UsuarioService
   ) {
 
+  }
+  
+  ngOnInit() {
+    this.username = this.route.snapshot.paramMap.get('usuario');
+    this.usuarios = this.UsuarioService.getUsers();
+
+    this.UsuarioService.getUser("YEBnCdZyEhM87oxTuTDH").subscribe(
+      element => {this.usuario = element;}
+    )
+    
+    //console.log(this.usuario.email);
+    this.usuarios.forEach(elment => {
+      return elment.forEach( element =>{
+        if (element.email == this.username){
+          //console.log(element.id);
+        }
+      })
+    });
+
+    
+    this.usuarios.subscribe(
+      element => {
+        while (element.length > 0){
+          this.user.push(element.pop());
+        }
+      }
+    )
+    //console.log(this.usuario);
+    //this.usuario = this.usuarios[0].subscribe
+   // for (var i = 0; i < this.usuarios.subscribe.length; i++){
+    //  this.
+    //}  
   }
 
   ionViewWillEnter() {

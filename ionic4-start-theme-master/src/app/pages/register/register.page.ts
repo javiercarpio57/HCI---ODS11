@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, MenuController, LoadingController, AlertController} from '@ionic/angular';
 import {Usuario, UsuarioService} from './../../services/usuario.service';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { auth, User } from 'firebase/app';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -83,21 +82,11 @@ export class RegisterPage implements OnInit {
     });
   }
 
-  async signUp() {
-
-    const loader = await this.loadingCtrl.create({
-      duration: 2000
-    });
-
-    loader.present();
-    loader.onWillDismiss().then(() => {
-      this.navCtrl.navigateRoot('/home-results');
-    });
-
-    
+  pushPage(){
+    this.navCtrl.navigateForward('/home-results/' + this.username);
   }
 
-  // // //
+
   goToLogin() {
     this.navCtrl.navigateRoot('/');
   }
@@ -106,11 +95,12 @@ export class RegisterPage implements OnInit {
     try {
 
       const res = await this.afAuth.auth.createUserWithEmailAndPassword(username, password)
-      this.navCtrl.navigateRoot('/home-results');
+      this.navCtrl.navigateRoot('/home-results/');
       console.log(res)
       this.usuario.email = username;
       this.usuario.nombre = fullName;
       this.saveUser();
+      this.pushPage();
 
     } catch(err) {
       const alert = await this.alertCtrl.create({

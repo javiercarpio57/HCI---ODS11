@@ -23,7 +23,8 @@ import { NotificationsComponent } from './components/notifications/notifications
 import firebaseConfig from './firebase'
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule, DefaultFirestoreSettings, FirestoreSettingsToken } from '@angular/fire/firestore';
+import { HomeResultsPageModule } from './pages/home-results/home-results.module';
 
 @NgModule({
   declarations: [AppComponent, NotificationsComponent],
@@ -37,14 +38,16 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     SearchFilterPageModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule ,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    HomeResultsPageModule
     
   ],
   entryComponents: [NotificationsComponent],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: FirestoreSettingsToken, useValue: {} }
   ],
   bootstrap: [AppComponent]
 })

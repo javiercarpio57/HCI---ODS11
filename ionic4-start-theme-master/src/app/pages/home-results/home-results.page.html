@@ -31,6 +31,13 @@
       CÁLCULO ENERGÉTICO
     </ion-button>
   </ion-card>
+
+  <ion-list>
+     <ion-item button *ngFor="let usuario of (usuarios | async)">
+       {{ usuario.id}} 
+      </ion-item>
+  </ion-list>
+
   
 </ion-content>
   

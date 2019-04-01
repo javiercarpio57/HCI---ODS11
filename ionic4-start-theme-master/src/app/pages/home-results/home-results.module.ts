@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, ActivatedRoute } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { PopmenuComponent } from './../../components/popmenu/popmenu.component';
@@ -27,12 +27,16 @@ const routes: Routes = [
   ],
   declarations: [HomeResultsPage, PopmenuComponent]
 })
-export class HomeResultsPageModule {
+export class HomeResultsPageModule  {
+
+  username = null;
 
   constructor(
     public navCtrl: NavController,
+    private route: ActivatedRoute
   ){}
 
+  
   goToEnergy() {
     this.navCtrl.navigateRoot('/enery');
   }
