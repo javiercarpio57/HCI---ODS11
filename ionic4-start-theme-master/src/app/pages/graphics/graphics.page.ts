@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Chart } from 'chart.js';
-import { GlobalService } from 'src/app/services/global.service';
+import { GlobalService } from '../../services/global.service';
+import { persona, PersonasService } from '../../services/persona.service';
+import { calculadora, CalculadoraEnergeticaService } from 'src/app/services/calculadora-energetica.service';
+import { Observable } from 'rxjs';
+import { element } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-graphics',
@@ -15,13 +19,16 @@ export class GraphicsPage implements OnInit {
   @ViewChild('panel') panel;
   lineChart2: any;
 
+  calculadora : Observable<calculadora[]>;
   dates: any[] = [];
   earths: any[] = [];
 
   dates2: any[] = [];
   paneles: any[] = [];
 
-  constructor(public global: GlobalService) {
+  constructor(public global: GlobalService, 
+    private PersonasService: PersonasService,
+    private CalculadoraEnergeticaService: CalculadoraEnergeticaService) {
     
     //this.dates.push("31/03/2019");
     //this.earths.push(5);
@@ -32,8 +39,48 @@ export class GraphicsPage implements OnInit {
 
   ngOnInit() {
     console.log(this.global.idDoc);
+    //this.graphic();
+    //this.graphic2();
+  }
+
+  ionViewWillEnter(){
+    
+    this.calculadora = this.CalculadoraEnergeticaService.getcalculadoras();
+    console.log("Acabo de entrar " + this.calculadora + " " + this.global.email);
+
+    this.calculadora.forEach(element => {
+      element.forEach(elment => {
+        if(elment.email == this.global.email){
+          this.saveData(elment.fecha, elment.paneles);
+        }
+      })
+    })
+
+  }
+
+  saveData(fecha: string, panel: number){
+    this.dates2.push(fecha);
+    this.paneles.push(panel);
+    console.log("hola");
+  }
+
+  ionViewDidEnter(){
+    console.log("Holaaaaaaaaaaaa " + this.dates2.length);
+    var a;
+    
+    for(a = 0; a < this.dates2.length; a++){
+      console.log("Fecha: " + this.dates2[a] + " Panel: " + this.paneles[a]);
+    }
+
     this.graphic();
     this.graphic2();
+
+    
+  }
+
+  ionViewDidLeave(){
+    this.calculadora = null;
+    console.log("Acabo de salir" + this.calculadora);
   }
   
   private graphic(){
@@ -65,7 +112,7 @@ export class GraphicsPage implements OnInit {
           yAxes: [{
             display: true,
             ticks: {
-                max: 5,
+                suggestedMax: 5,
                 min: 0,
                 stepSize: 1
             }
