@@ -13,6 +13,7 @@ import {
 // Modals
 import { ImagePage } from './../modal/image/image.page';
 import { Usuario, UsuarioService } from 'src/app/services/usuario.service';
+import { persona, PersonasService } from '../../services/persona.service';
 import { Observable } from 'rxjs';
 import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 import { stringify } from 'querystring';
@@ -28,6 +29,8 @@ import { GlobalService } from '../../services/global.service';
 export class HomeResultsPage implements OnInit{
   cualquierCosa: string = "";
   nombre: string = "";
+
+  personas : Observable<persona[]>;
 
   searchKey = '';
   themeCover = 'assets/img/Calc1.png';
@@ -58,7 +61,8 @@ export class HomeResultsPage implements OnInit{
     public toastCtrl: ToastController,
     private route: ActivatedRoute,
     private UsuarioService: UsuarioService,
-    public global: GlobalService
+    public global: GlobalService,
+    private PersonasService: PersonasService
   ) {
   }
   
@@ -74,7 +78,7 @@ export class HomeResultsPage implements OnInit{
     
     console.log(this.global.email);
     this.usuarios = this.UsuarioService.getUsers();
-
+    this.personas = this.PersonasService.getpersonas();
     this.getId();
   }
 
@@ -115,6 +119,11 @@ export class HomeResultsPage implements OnInit{
 
   ionViewWillEnter() {
     this.menuCtrl.enable(true);
+
+  }
+
+  ionViewDidEnter(){
+    
   }
 
   settings() {

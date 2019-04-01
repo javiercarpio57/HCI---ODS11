@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { Pages } from './interfaces/pages';
+import { GlobalService } from '../app/services/global.service';
 
 
 @Component({
@@ -14,13 +15,15 @@ import { Pages } from './interfaces/pages';
 })
 export class AppComponent {
 
+  name: string = "no hay"
   public appPages: Array<Pages>;
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    public global: GlobalService
   ) {
     this.appPages = [
       {
@@ -66,5 +69,10 @@ export class AppComponent {
 
   logout() {
     this.navCtrl.navigateRoot('/');
+  }
+  
+  ionViewDidEnter(){
+    console.log("ya vine amigos");
+    this.name = this.global.nombre;
   }
 }

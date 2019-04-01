@@ -4,6 +4,8 @@ import { NavController, MenuController, LoadingController, AlertController} from
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ActivatedRoute } from '@angular/router';
 import { persona, PersonasService } from 'src/app/services/persona.service';
+import { Observable } from 'rxjs';
+import { GlobalService } from '../../services/global.service';
 
 
 @Component({
@@ -14,6 +16,7 @@ import { persona, PersonasService } from 'src/app/services/persona.service';
 export class RegisterPage implements OnInit {
   public onRegisterForm: FormGroup;
 
+  personas : Observable<persona[]>;
   username: string = ""
   password: string = ""
   fullName: string = ""
@@ -33,11 +36,15 @@ export class RegisterPage implements OnInit {
     private formBuilder: FormBuilder,
     public afAuth: AngularFireAuth,
     private personaService: PersonasService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private global: GlobalService,
   ) { }
 
   ionViewWillEnter() {
     this.menuCtrl.enable(false);
+    this.global.email = null;
+    this.global.idDoc = null;
+    this.global.nombre = null;
   }
 
   async saveUser(){
@@ -54,6 +61,31 @@ export class RegisterPage implements OnInit {
       });
     }
 
+  }
+
+  ionViewWillLeave(){
+    this.personas = this.personaService.getpersonas();
+  }
+  
+  ionViewDidLeave(){
+  
+    console.log("Nomrbe es " + this.global.nombre);
+    this.personas.subscribe(
+      element => {
+        element.forEach(elment => {
+          if(elment.email == this.global.email){
+            this.saveName(elment.nombre.toString());
+          }
+        })
+      }
+    )
+  
+  console.log("Nomrbe es " + this.global.nombre);
+  }
+
+  saveName(nombre: string){
+    this.global.nombre = nombre;
+    console.log("Nombre guardado");
   }
 
   ngOnInit() {
@@ -75,6 +107,7 @@ export class RegisterPage implements OnInit {
   }
 
   pushPage(){
+    this.global.email = this.username;
     this.navCtrl.navigateForward('/home-results/' + this.username);
   }
 

@@ -7,6 +7,9 @@ import { auth } from 'firebase/app';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController, MenuController, ToastController, AlertController, LoadingController } from '@ionic/angular';
+import { GlobalService } from '../../services/global.service';
+import { persona, PersonasService } from '../../services/persona.service';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -16,7 +19,8 @@ import { NavController, MenuController, ToastController, AlertController, Loadin
 })
 export class LoginPage implements OnInit {
   public onLoginForm: FormGroup;
-
+  
+  personas : Observable<persona[]>;
   username: string = ""
   password: string = ""
 
@@ -28,10 +32,39 @@ export class LoginPage implements OnInit {
     public loadingCtrl: LoadingController,
     private formBuilder: FormBuilder,
     public afAuth: AngularFireAuth,
+    private global: GlobalService,
+    private PersonasService: PersonasService
   ) { }
 
   ionViewWillEnter() {
     this.menuCtrl.enable(false);
+    this.global.email = null;
+    this.global.idDoc = null;
+    this.global.nombre = null;
+  }
+
+  ionViewWillLeave(){
+    this.personas = this.PersonasService.getpersonas();
+  }
+
+  ionViewDidLeave(){
+    console.log("Nomrbe es " + this.global.nombre);
+    this.personas.subscribe(
+      element => {
+        element.forEach(elment => {
+          if(elment.email == this.global.email){
+            this.saveName(elment.nombre.toString());
+            console.log(this.global.email);
+          }
+        })
+      }
+    )
+  console.log("Nomrbe es " + this.global.nombre);
+  }
+
+  saveName(nombre: string){
+    this.global.nombre = nombre;
+    console.log("Nombre guardado");
   }
 
   ngOnInit() {
@@ -126,6 +159,7 @@ export class LoginPage implements OnInit {
   }
 
   pushPage(){
+    this.global.email = this.username;
     this.navCtrl.navigateForward('/home-results/' + this.username);
   }
 }
