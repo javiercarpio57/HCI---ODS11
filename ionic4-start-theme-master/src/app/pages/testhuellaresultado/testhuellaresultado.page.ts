@@ -75,14 +75,14 @@ export class TesthuellaresultadoPage implements OnInit {
     this.huella.porcentajeEnergetico = this.energeticoPorcentaje;
     this.huella.porcentajeTransporte = this.transportePorcentaje;
 
-    this.huella.fecha = this.fecha.getDate() + '/' + this.fecha.getMonth() + '/' +this.fecha.getFullYear() + ' ' + this.fecha.getHours() + ':' +this.fecha.getMinutes() + ':' +this.fecha.getSeconds();
+    this.huella.fecha = this.fecha.getDate() + '/' + (this.fecha.getMonth()+1) + '/' +this.fecha.getFullYear() + ' ' + this.fecha.getHours() + ':' +this.fecha.getMinutes() + ':' +this.fecha.getSeconds();
     this.saveHuella();
 0  }
 
   async saveHuella(){
 
     const loading = await this.loadingCtrl.create({
-      message: 'Saving User'
+      message: 'Guardando datos...'
     });
     await loading.present();
     this.HuellaCarbonoService.addHuella(this.huella).then(() => {

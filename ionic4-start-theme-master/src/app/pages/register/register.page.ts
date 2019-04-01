@@ -49,7 +49,7 @@ export class RegisterPage implements OnInit {
 
   async saveUser(){
     const loading = await this.loadingCtrl.create({
-      message: 'Saving User'
+      message: 'Guardando usuario...'
     });
     await loading.present();
 

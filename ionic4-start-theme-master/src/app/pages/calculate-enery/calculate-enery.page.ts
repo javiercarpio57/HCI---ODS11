@@ -41,7 +41,7 @@ export class CalculateEneryPage implements OnInit {
     this.calculadora.email = this.global.email;
     this.calculadora.consumoTotal = this.potenciaE;
     this.calculadora.paneles = this.cantPanel;
-    this.calculadora.fecha = this.fecha.getDate() + '/' + this.fecha.getMonth() + '/' +this.fecha.getFullYear() + ' ' + this.fecha.getHours() + ':' +this.fecha.getMinutes() + ':' +this.fecha.getSeconds(); 
+    this.calculadora.fecha = this.fecha.getDate() + '/' + (this.fecha.getMonth()+1) + '/' +this.fecha.getFullYear() + ' ' + this.fecha.getHours() + ':' +this.fecha.getMinutes() + ':' +this.fecha.getSeconds(); 
     this.saveCalculator();
   }
 
