@@ -65,17 +65,17 @@ export class HomeResultsPage implements OnInit{
   ngOnInit() {
     this.global.idDoc = "Hola, soy Javier";
     this.username = this.route.snapshot.paramMap.get('usuario');
-    this.global.email = this.username;
+
+    if(this.global.email != null){
+      
+    }else{
+      this.global.email = this.username;
+    }
+    
     console.log(this.global.email);
     this.usuarios = this.UsuarioService.getUsers();
 
-    
-
     this.getId();
-    
-    
-    //this.getUser();
-    //this.printSome();
   }
 
   getId(){

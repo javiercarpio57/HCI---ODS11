@@ -60,6 +60,7 @@ export class EnergyPage implements OnInit {
   };
 
   constructor(public modalCtrl: ModalController, private formBuilder: FormBuilder, private navCtrl: NavController) { 
+    console.log("Inicie en constructor");
     this.myForm = this.createMyForm();
 
     this.slider = {
@@ -116,6 +117,8 @@ export class EnergyPage implements OnInit {
         }
       ]
     };
+
+    
   }
 
   printSome(some: string){
@@ -173,8 +176,28 @@ export class EnergyPage implements OnInit {
     });
   }
 
+  ionViewWillEnter(){
+    this.lista.length = 0;
+    this.arreglo.length = 0;
+    this.id = 0;
+    this.contador = 0;
+    this.consumo = 0;
+
+    this.i1 = 'assets/img/transparent.png';
+    this.i2 = 'assets/img/transparent.png';
+    this.i3 = 'assets/img/transparent.png';
+    this.i4 = 'assets/img/transparent.png';
+    this.i5 = 'assets/img/transparent.png';
+    this.i6 = 'assets/img/transparent.png';
+    this.i7 = 'assets/img/transparent.png';
+    this.i8 = 'assets/img/transparent.png';
+    this.i9 = 'assets/img/transparent.png';
+    this.i10 = 'assets/img/transparent.png';
+    this.i11 = 'assets/img/transparent.png';
+    this.i12 = 'assets/img/transparent.png';
+  }
+
   ngOnInit() {
-    
   }
 
   verify(){

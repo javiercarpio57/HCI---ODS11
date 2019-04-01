@@ -34,7 +34,8 @@ export class CalculateEneryPage implements OnInit {
     this.potenciaElectrica();
     this.cantPaneles();
     console.log("Calculo: " + this.datos);
-    console.log(this.global.idDoc);
+    console.log("Este es mi correo: " + this.global.email);
+
     this.calculadora.email = this.global.email;
     this.calculadora.consumoTotal = this.potenciaE;
     this.calculadora.paneles = this.cantPanel;
@@ -44,7 +45,7 @@ export class CalculateEneryPage implements OnInit {
   async saveCalculator(){
 
     const loading = await this.loadingCtrl.create({
-      message: 'Saving User'
+      message: 'Guardando datos...'
     });
     await loading.present();
     this.CalculadoraEnergeticaService.addcalculadora(this.calculadora).then(() => {
