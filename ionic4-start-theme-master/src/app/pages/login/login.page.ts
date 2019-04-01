@@ -152,15 +152,32 @@ export class LoginPage implements OnInit {
     }
   }
 
-  resetPassword(email: string) {
+  async resetPassword(email: string) {
+    const loading = await this.loadingCtrl.create({
+      message: 'Enviando restauración...'
+    });
     var auth = firebase.auth();
     return auth.sendPasswordResetEmail(email)
-      .then(() => console.log("email sent"))
-      .catch((error) => console.log(error))
+      .then(() => loading.dismiss())
+      .catch((error) => this.showError(error)) 
   }
-
   pushPage(){
     this.global.email = this.username;
     this.navCtrl.navigateForward('/home-results/' + this.username);
+
+  }
+
+  async showError(error){
+    const alert = await this.alertCtrl.create({
+      header: '',
+      subHeader: '',
+      message: error.message,
+      buttons: ['OK']
+    });
+    return await alert.present();
+  }
+
+  translate(error){
+    
   }
 }
