@@ -26,7 +26,7 @@ import { GlobalService } from '../../services/global.service';
   styleUrls: ['./home-results.page.scss']
 })
 export class HomeResultsPage implements OnInit{
-  cualquierCosa: any[] = [];
+  cualquierCosa: string = "";
   nombre: string = "";
 
   searchKey = '';
@@ -69,39 +69,48 @@ export class HomeResultsPage implements OnInit{
     console.log(this.global.email);
     this.usuarios = this.UsuarioService.getUsers();
 
-    this.UsuarioService.getUser("YEBnCdZyEhM87oxTuTDH").subscribe(
-      element => {
-        console.log(element.nombre.toString());
-        //this.cualquierCosa.push(element.nombre);
-        this.global.idDoc = element.nombre.toString()}
-    )
-    
     
 
-    //console.log("getUser: " + a);
-    console.log("User: " + this.usuarios);
+    this.getId();
     
-    //console.log(this.usuario.email);
-    this.usuarios.forEach(elment => {
-      return elment.forEach( element =>{
-        if (element.email == this.username){
-          //console.log(element.id);
-        }
-      })
-    });
+    
+    //this.getUser();
+    //this.printSome();
+  }
 
-    
+  getId(){
     this.usuarios.subscribe(
       element => {
-        console.log("Usuarios: " + element);
+        element.forEach(elment => {
+          if(elment.email == this.username){
+            //console.log("asdfhasdf " + elment.id);
+            //this.cualquierCosa = elment.id;
+            this.saveID(elment.id);
+            this.getUser();
+          }
+        });
       }
     )
-    //console.log(this.usuario);
-    //this.usuario = this.usuarios[0].subscribe
-   // for (var i = 0; i < this.usuarios.subscribe.length; i++){
-    //  this.
-    //}  
-    this.printSome();
+    console.log("Termine ID");
+  }
+
+  getUser(){
+    console.log("mmmmm " + this.global.idDoc.toString());
+    this.UsuarioService.getUser(this.global.idDoc.toString()).subscribe(
+      element => {
+        this.saveData(element.email, element.nombre.toString(), element.cantidadDeTierras,
+          element.porcentajeAgua, element.porcentajeTransporte, element.porcentajeEnergetico,
+          element.porcentajeContaminacion, element.porcentajeAgua, 
+          element.consumoTotal, element.paneles);
+        this.printSome();
+      }
+    )
+    console.log("Termine user");
+    //this.printSome();
+  }
+
+  printSome(){
+    console.log(this.usuario.nombre);
   }
 
   ionViewWillEnter() {
@@ -128,7 +137,25 @@ export class HomeResultsPage implements OnInit{
     return await modal.present();
   }
 
-  printSome(){
-    console.log("Nombre: " + this.global.idDoc);
+  saveID(id: string){
+    this.global.idDoc = id;
+    //this.getUser();
+  }
+
+  saveData(email: string, nombre: string, cantTierra: number, porAl: number,
+    porTran: number, porEner: number, porCont: number, porAg: number,
+    conT: number, panel: number){
+    
+      this.usuario.email = email;
+      this.usuario.nombre = nombre;
+      this.usuario.cantidadDeTierras = cantTierra;
+      this.usuario.porcentajeAlimentacion = porAl;
+      this.usuario.porcentajeTransporte = porTran;
+      this.usuario.porcentajeEnergetico = porEner;
+      this.usuario.porcentajeContaminacion = porCont;
+      this.usuario.porcentajeAgua = porAg;
+      this.usuario.consumoTotal = conT;
+      this.usuario.paneles = panel;
+      console.log("Ya termine");
   }
 }
