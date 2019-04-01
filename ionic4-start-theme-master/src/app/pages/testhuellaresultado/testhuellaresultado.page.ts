@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, LoadingController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { GlobalService } from '../../services/global.service';
+import { Huella, HuellaCarbonoService } from 'src/app/services/huella-carbono.service';
 
 @Component({
   selector: 'app-testhuellaresultado',
@@ -32,9 +33,22 @@ export class TesthuellaresultadoPage implements OnInit {
   public contaminacionPorcentaje = null;
   public aguaPorcentaje = null;
   public images1: any[] = [];
+  fecha: Date = new Date();
   constructor(
-    public navCtrl: NavController, private activateRoute: ActivatedRoute, public global: GlobalService
+    public navCtrl: NavController, private activateRoute: ActivatedRoute, public global: GlobalService,
+    private HuellaCarbonoService: HuellaCarbonoService, public loadingCtrl: LoadingController,
   ) { }
+
+  huella: Huella = {
+    email : '',
+    cantidadDeTierras : 0,
+    porcentajeAlimentacion : 0,
+    porcentajeTransporte : 0,
+    porcentajeEnergetico : 0,
+    porcentajeContaminacion : 0,
+    porcentajeAgua : 0,
+    fecha: ""
+  }
 
   ngOnInit() {
     this.passedId1 = this.activateRoute.snapshot.paramMap.get('myid37');
@@ -53,6 +67,27 @@ export class TesthuellaresultadoPage implements OnInit {
     //Aqui hare el calculo de los porcentajes en que contribuye cada actividad para la huella de carbono obtenida
     this.calculoPorcentajes();
     console.log(this.global.idDoc);
+    this.huella.email = this.global.email;
+    this.huella.cantidadDeTierras = this.calculoTierras;
+    this.huella.porcentajeAgua = this.aguaPorcentaje;
+    this.huella.porcentajeAlimentacion = this.alimentacionPorcentaje;
+    this.huella.porcentajeContaminacion = this.contaminacionPorcentaje;
+    this.huella.porcentajeEnergetico = this.energeticoPorcentaje;
+    this.huella.porcentajeTransporte = this.transportePorcentaje;
+
+    this.huella.fecha = this.fecha.getDate() + '/' + this.fecha.getMonth() + '/' +this.fecha.getFullYear() + ' ' + this.fecha.getHours() + ':' +this.fecha.getMinutes() + ':' +this.fecha.getSeconds();
+    this.saveHuella();
+0  }
+
+  async saveHuella(){
+
+    const loading = await this.loadingCtrl.create({
+      message: 'Saving User'
+    });
+    await loading.present();
+    this.HuellaCarbonoService.addHuella(this.huella).then(() => {
+      loading.dismiss();
+    });
   }
 
   calculoTierrasNecesarias(){

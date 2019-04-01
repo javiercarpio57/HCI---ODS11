@@ -13,6 +13,7 @@ export interface Huella {
   porcentajeEnergetico : number;
   porcentajeContaminacion : number;
   porcentajeAgua : number;
+  fecha: string;
 }
 @Injectable({
   providedIn: 'root'
