@@ -6,7 +6,7 @@
       <div class="logo"></div>
       <h3 no-margin>
         <ion-text color="light" class="fw700">
-          <ion-text color="secondary">Register</ion-text>
+          <ion-text color="secondary">Registro</ion-text>
         </ion-text>
       </h3>
     </div>
@@ -16,39 +16,39 @@
       <ion-item no-padding class="animated fadeInUp">
         <ion-label position="floating">
           <ion-icon name="mail" item-start></ion-icon>
-          Full Name
+          Nombre
         </ion-label>
         <ion-input color="secondary" type="text" formControlName="fullName" [(ngModel)]="fullName"></ion-input>
       </ion-item>
       <p ion-text class="text08" *ngIf="onRegisterForm.get('fullName').touched && onRegisterForm.get('fullName').hasError('required')">
         <ion-text color="warning">
-          This field is required
+          Este campo es requerido
         </ion-text>
       </p>
 
       <ion-item no-padding class="animated fadeInUp">
         <ion-label position="floating">
           <ion-icon name="mail" item-start></ion-icon>
-          Email
+          Correo
         </ion-label>
         <ion-input color="secondary" type="email" formControlName="email" [(ngModel)]="username"></ion-input>
       </ion-item>
       <p ion-text class="text08" *ngIf="onRegisterForm.get('email').touched && onRegisterForm.get('email').hasError('required')">
         <ion-text color="warning">
-          This field is required
+          Este campo es requerido
         </ion-text>
       </p>
 
       <ion-item no-padding class="animated fadeInUp">
         <ion-label position="floating">
           <ion-icon name="lock" item-start></ion-icon>
-          Password
+          Contraseña:
         </ion-label>
         <ion-input color="secondary" type="password" formControlName="password" [(ngModel)]="password"></ion-input>
       </ion-item>
       <p ion-text color="warning" class="text08" *ngIf="onRegisterForm.get('password').touched && onRegisterForm.get('password').hasError('required')">
         <ion-text color="warning">
-          This field is required
+          Este campo es requerido
         </ion-text>
       </p>
     </form>
@@ -57,14 +57,8 @@
       <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="register()" [disabled]="!onRegisterForm.valid"
         tappable>
         <ion-icon name="log-in"></ion-icon>
-        Sign Up
+        Acceder
       </ion-button>
-
-      <p text-center>
-        <ion-text color="light">
-          Or Sign Up with:
-        </ion-text>
-      </p>
 
 
     </div>
@@ -73,7 +67,7 @@
     <div text-center margin-top>
       <span (click)="goToLogin()" tappable>
         <ion-text color="light">
-          <strong>I have an account!</strong>
+          <strong>¡Ya tengo cuenta!</strong>
         </ion-text>
       </span>
     </div>
