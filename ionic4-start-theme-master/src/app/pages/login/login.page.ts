@@ -23,6 +23,7 @@ export class LoginPage implements OnInit {
   personas : Observable<persona[]>;
   username: string = ""
   password: string = ""
+  mensaje: string = ""
 
   constructor(
     public navCtrl: NavController,
@@ -141,14 +142,8 @@ export class LoginPage implements OnInit {
       this.navCtrl.navigateRoot('/home-results/');
       this.pushPage();
     } catch(err) {
-      console.dir(err.message)
-      const alert = await this.alertCtrl.create({
-        header: '',
-        subHeader: '',
-        message: err.message,
-        buttons: ['OK']
-      });
-      return await alert.present();
+      console.log(err);
+      this.showError(err);
     }
   }
 
@@ -168,16 +163,35 @@ export class LoginPage implements OnInit {
   }
 
   async showError(error){
+    if (error.code == "auth/invalid-email"){
+      console.log("1");
+      this.mensaje = "El correo no cuenta con el formato adecuado.";
+    }
+    if (error.code == "auth/wrong-password"){
+      console.log("2")
+      this.mensaje = "La contraseña es inválido o el usuario no existe.";
+    }
+    if (error.code == "auth/user-not-found"){
+      console.log("3")
+      this.mensaje = "Usuario no encontrado.";
+    }
+    if (error.code == "auth/weak-password"){
+      console.log("2")
+      this.mensaje = "La direccion de correo ya es usada en otra cuenta..";
+    }
+    if (error.code == "auth/email-already-in-use"){
+      console.log("3")
+      this.mensaje = "La contraseña deberia de tener al menos 6 caracteres.";
+    }
+
     const alert = await this.alertCtrl.create({
       header: '',
       subHeader: '',
-      message: error.message,
+      message: this.mensaje,
       buttons: ['OK']
     });
     return await alert.present();
-  }
-
-  translate(error){
     
   }
+
 }

@@ -20,6 +20,7 @@ export class RegisterPage implements OnInit {
   username: string = ""
   password: string = ""
   fullName: string = ""
+  mensaje: string = ""
 
   persona : persona = {
     email : 'paulbelches@hotmail.com',
@@ -128,13 +129,38 @@ export class RegisterPage implements OnInit {
       this.pushPage();
 
     } catch(err) {
-      const alert = await this.alertCtrl.create({
-        header: '',
-        subHeader: '',
-        message: err.message,
-        buttons: ['OK']
-      });
-      return await alert.present();
+      this.showError(err);
     }
+  }
+  async showError(error){
+    if (error.code == "auth/invalid-email"){
+      console.log("1");
+      this.mensaje = "El correo no cuenta con el formato adecuado.";
+    }
+    if (error.code == "auth/wrong-password"){
+      console.log("2")
+      this.mensaje = "La contraseña es inválido o el usuario no existe.";
+    }
+    if (error.code == "auth/user-not-found"){
+      console.log("3")
+      this.mensaje = "Usuario no encontrado.";
+    }
+    if (error.code == "auth/weak-password"){
+      console.log("2")
+      this.mensaje = "La contraseña deberia de tener al menos 6 caracteres.";
+    }
+    if (error.code == "auth/email-already-in-use"){
+      console.log("3")
+      this.mensaje = "La direccion de correo ya es usada en otra cuenta.";
+    }
+
+    const alert = await this.alertCtrl.create({
+      header: '',
+      subHeader: '',
+      message: this.mensaje,
+      buttons: ['OK']
+    });
+    return await alert.present();
+    
   }
 }
