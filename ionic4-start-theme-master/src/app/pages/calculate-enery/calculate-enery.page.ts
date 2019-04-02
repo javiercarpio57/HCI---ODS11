@@ -35,8 +35,6 @@ export class CalculateEneryPage implements OnInit {
     this.datos = this.datos.toFixed(2)
     this.potenciaElectrica();
     this.cantPaneles();
-    console.log("Calculo: " + this.datos);
-    console.log("Este es mi correo: " + this.global.email);
 
     this.calculadora.email = this.global.email;
     this.calculadora.consumoTotal = this.datos;

@@ -60,7 +60,7 @@ export class EnergyPage implements OnInit {
   };
 
   constructor(public modalCtrl: ModalController, private formBuilder: FormBuilder, private navCtrl: NavController) { 
-    console.log("Inicie en constructor");
+    
     this.myForm = this.createMyForm();
 
     this.slider = {
@@ -274,10 +274,9 @@ export class EnergyPage implements OnInit {
 
     for(paso = 0; paso < this.lista.length; paso++){
       if(a == this.lista[paso][3]){
-        console.log("Lo encontre");
         break;
       }else{
-        console.log("Todavia no");
+
       }
     }
   }
@@ -336,11 +335,8 @@ export class EnergyPage implements OnInit {
   private calculoConsumo(){
     var a;
     for(a = 0; a < this.lista.length; a++){
-      console.log("asadf" + this.lista[a][4]);
       this.kwh += this.numConsumo[parseInt(this.lista[a][4]) - 1] * this.lista[a][0] * this.lista[a][1] * this.lista[a][2] / 30;
-      console.log(this.kwh);
     }
-    console.log("Consumo: " + this.kwh);
   }
 
   kwh = 0;

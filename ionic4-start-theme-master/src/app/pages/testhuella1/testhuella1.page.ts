@@ -23,7 +23,6 @@ export class Testhuella1Page implements OnInit {
   }
 
   actualizarResp1(): void{
-    //console.log(this.lines);
   }
   
   pushPage(){

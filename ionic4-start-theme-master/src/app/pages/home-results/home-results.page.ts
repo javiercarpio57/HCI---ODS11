@@ -94,21 +94,16 @@ export class HomeResultsPage implements OnInit{
   }
 
   ionViewDidLoad(){
-    console.log("Lenght" + this.global.dates.length);
   }
 
   saveData1(fecha: string, panel: number){
     this.global.dates.push(fecha);
     this.global.paneles.push(panel);
-    //this.dates2.push(fecha);
-    //this.paneles.push(panel);
-    console.log("hola");
   }
 
   saveData2(fecha: string, tierra: number){
     this.global.datesEarth.push(fecha);
     this.global.earth.push(tierra);
-    console.log("hola");
   }
   
   ngOnInit() {
@@ -121,7 +116,6 @@ export class HomeResultsPage implements OnInit{
       this.global.email = this.username;
     }
     
-    console.log(this.global.email);
     this.usuarios = this.UsuarioService.getUsers();
     this.personas = this.PersonasService.getpersonas();
     this.getId();
@@ -136,45 +130,31 @@ export class HomeResultsPage implements OnInit{
       element => {
         element.forEach(elment => {
           if(elment.email == this.username){
-            //console.log("asdfhasdf " + elment.id);
-            //this.cualquierCosa = elment.id;
             this.saveID(elment.id);
             this.getUser();
           }
         });
       }
     )
-    console.log("Termine ID");
   }
 
   getUser(){
-    console.log("mmmmm " + this.global.idDoc.toString());
     this.UsuarioService.getUser(this.global.idDoc.toString()).subscribe(
       element => {
         this.saveData(element.email, element.nombre.toString(), element.cantidadDeTierras,
           element.porcentajeAgua, element.porcentajeTransporte, element.porcentajeEnergetico,
           element.porcentajeContaminacion, element.porcentajeAgua, 
           element.consumoTotal, element.paneles);
-        this.printSome();
       }
     )
-    console.log("Termine user");
-    //this.printSome();
   }
 
-  printSome(){
-    console.log(this.usuario.nombre);
-  }
 
   ionViewWillEnter() {
     this.menuCtrl.enable(true);
 
   }
 
-  ionViewDidEnter(){
-    console.log("Refresh");
-    //this.refresh();
-  }
 
   settings() {
     this.navCtrl.navigateForward('settings');
@@ -215,6 +195,5 @@ export class HomeResultsPage implements OnInit{
       this.usuario.porcentajeAgua = porAg;
       this.usuario.consumoTotal = conT;
       this.usuario.paneles = panel;
-      console.log("Ya termine");
   }
 }

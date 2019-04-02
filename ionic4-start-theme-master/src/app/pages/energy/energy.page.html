@@ -13,8 +13,13 @@
 
 <ion-content padding>
 
+  <p text-center>
+    <ion-text color="dark">
+      <h2>Cálculo de tu consumo energético</h2>
+    </ion-text>
+  </p>
   <div>
-    <h5>Seleccione un dispositivo:</h5>
+    <h5>Seleccione alguno de estos dispositivos:</h5>
     <ion-card class="bg-card espaciado3">
       <ion-grid>
         <ion-row>
@@ -42,6 +47,12 @@
       </ion-grid>
     </ion-card>
   </div>
+
+  <p>
+    <ion-text color="dark">
+      <h5>Tus dispositivos seleccionados:</h5>
+    </ion-text>
+  </p>
 
   <ion-row>
     <ion-col size="1" (click)="clickImage('i1')">
@@ -84,7 +95,12 @@
 
   <form [formGroup]="myForm" (ngSubmit)="saveData()">
 
-    <h5>Complete los siguientes campos:</h5>
+    <p>
+      <ion-text color="dark">
+        <h5>Complete los siguientes campos:</h5>
+      </ion-text>
+    </p>
+    
 
     <ion-list class="bg-light">
       <ion-item>
@@ -130,7 +146,6 @@
       <p class="mensajeError">Debe tener por lo menos un dispositivo.</p>
     </ion-item>
 
-    <br>
     <div text-center>
       <ion-grid>
         <ion-row>

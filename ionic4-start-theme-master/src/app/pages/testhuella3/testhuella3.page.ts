@@ -35,7 +35,6 @@ export class Testhuella3Page implements OnInit {
   }
 
   actualizarResp3(): void{
-    //console.log(this.lines);
   }
 
   async alertaSeleccion(){

@@ -36,7 +36,6 @@ export class Testhuella8Page implements OnInit {
     this.passedId7 = this.activateRoute.snapshot.paramMap.get('myid28');
   }
   actualizarResp8(): void{
-    //console.log(this.lines);
   }
   async alertaSeleccion(){
     const alert = await this.alertCtrl.create({

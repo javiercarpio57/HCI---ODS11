@@ -25,7 +25,6 @@ export class Testhuella2Page implements OnInit {
   }
 
   actualizarResp2(): void{
-    //console.log(this.lines);
   }
 
   async alertaSeleccion(){

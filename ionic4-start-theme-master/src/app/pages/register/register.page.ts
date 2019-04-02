@@ -69,8 +69,6 @@ export class RegisterPage implements OnInit {
   }
   
   ionViewDidLeave(){
-  
-    console.log("Nomrbe es " + this.global.nombre);
     this.personas.subscribe(
       element => {
         element.forEach(elment => {
@@ -80,13 +78,10 @@ export class RegisterPage implements OnInit {
         })
       }
     )
-  
-  console.log("Nomrbe es " + this.global.nombre);
   }
 
   saveName(nombre: string){
     this.global.nombre = nombre;
-    console.log("Nombre guardado");
   }
 
   ngOnInit() {
@@ -122,7 +117,6 @@ export class RegisterPage implements OnInit {
 
       const res = await this.afAuth.auth.createUserWithEmailAndPassword(username, password)
       this.navCtrl.navigateRoot('/home-results/');
-      console.log(res)
       this.persona.email = username;
       this.persona.nombre = fullName;
       this.saveUser();
@@ -134,23 +128,18 @@ export class RegisterPage implements OnInit {
   }
   async showError(error){
     if (error.code == "auth/invalid-email"){
-      console.log("1");
       this.mensaje = "El correo no cuenta con el formato adecuado.";
     }
     if (error.code == "auth/wrong-password"){
-      console.log("2")
       this.mensaje = "La contraseña es inválido o el usuario no existe.";
     }
     if (error.code == "auth/user-not-found"){
-      console.log("3")
       this.mensaje = "Usuario no encontrado.";
     }
     if (error.code == "auth/weak-password"){
-      console.log("2")
       this.mensaje = "La contraseña deberia de tener al menos 6 caracteres.";
     }
     if (error.code == "auth/email-already-in-use"){
-      console.log("3")
       this.mensaje = "La direccion de correo ya es usada en otra cuenta.";
     }
 

@@ -66,7 +66,6 @@ export class TesthuellaresultadoPage implements OnInit {
 
     //Aqui hare el calculo de los porcentajes en que contribuye cada actividad para la huella de carbono obtenida
     this.calculoPorcentajes();
-    console.log(this.global.idDoc);
     this.huella.email = this.global.email;
     this.huella.cantidadDeTierras = this.calculoTierras;
     this.huella.porcentajeAgua = this.aguaPorcentaje;

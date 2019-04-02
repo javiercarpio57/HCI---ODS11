@@ -26,18 +26,9 @@ export class GraphicsPage implements OnInit {
     private HuellaCarbonoService: HuellaCarbonoService) {   }
 
   ngOnInit() {
-    console.log(this.global.idDoc);
   }
 
   ionViewWillEnter(){
-    if(this.global.dates.length > 5){
-      this.global.dates = this.global.dates.slice(this.global.dates.length - 5, );
-      this.global.paneles = this.global.paneles.slice(this.global.paneles.length - 5, );
-    }
-    if(this.global.datesEarth.length > 5){
-      this.global.datesEarth = this.global.datesEarth.slice(this.global.datesEarth.length - 5, );
-      this.global.earth = this.global.earth.slice(this.global.earth.length - 5, );
-    }
   }
 
   ionViewDidEnter(){

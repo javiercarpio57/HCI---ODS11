@@ -72,7 +72,6 @@ export class AppComponent {
   }
   
   ionViewDidEnter(){
-    console.log("ya vine amigos");
     this.name = this.global.nombre;
   }
 }

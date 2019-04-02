@@ -34,7 +34,6 @@ export class CalculadoraEnergeticaService {
   }
 
   getcalculadoras() {
-    console.log("llamando a calculadoras");
     return this.calculadoras;
   }
 
