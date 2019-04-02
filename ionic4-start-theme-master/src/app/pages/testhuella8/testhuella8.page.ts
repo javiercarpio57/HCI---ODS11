@@ -62,5 +62,16 @@ export class Testhuella8Page implements OnInit {
   goToBack7() {
     this.pushPageBack()
   }
+
+  async info() {
+    const alert = await this.alertCtrl.create({
+      header: 'Ayuda',
+      message: 'Debes contestar este test conscientemente para obtener un resultado real sobre tu huella de carbono. <br>No puedes dejar ninguna respuesta en blanco.',
+      buttons: ['OK'],
+      cssClass: 'popUp'
+    });
+
+    await alert.present();
+  }
 }
 

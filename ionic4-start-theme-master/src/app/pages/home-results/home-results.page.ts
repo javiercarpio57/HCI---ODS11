@@ -196,4 +196,15 @@ export class HomeResultsPage implements OnInit{
       this.usuario.consumoTotal = conT;
       this.usuario.paneles = panel;
   }
+
+  async info() {
+    const alert = await this.alertCtrl.create({
+      header: 'Ayuda',
+      message: 'Al ver a la izquierda, puedes observar un menú desplegable con más opciones (<ion-icon name="menu"></ion-icon>). <br>También, puedes seleccionar cualquiera de las dos opciones presentes para calcular tu huella de carbono y tu consumo energético mensual.',
+      buttons: ['OK'],
+      cssClass: 'popUp'
+    });
+
+    await alert.present();
+  }
 }

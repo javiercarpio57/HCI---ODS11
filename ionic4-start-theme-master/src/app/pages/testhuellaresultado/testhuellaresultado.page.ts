@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, LoadingController } from '@ionic/angular';
+import { NavController, LoadingController, AlertController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { GlobalService } from '../../services/global.service';
 import { Huella, HuellaCarbonoService } from 'src/app/services/huella-carbono.service';
@@ -37,6 +37,7 @@ export class TesthuellaresultadoPage implements OnInit {
   constructor(
     public navCtrl: NavController, private activateRoute: ActivatedRoute, public global: GlobalService,
     private HuellaCarbonoService: HuellaCarbonoService, public loadingCtrl: LoadingController,
+    public alertCtrl: AlertController
   ) { }
 
   huella: Huella = {
@@ -205,6 +206,17 @@ export class TesthuellaresultadoPage implements OnInit {
 
   goToMenu(){
     this.navCtrl.navigateBack('/home-results');
+  }
+
+  async info() {
+    const alert = await this.alertCtrl.create({
+      header: 'Ayuda',
+      message: 'Puedes ver tus resultados de tu huella de carbono, y, más abajo, observarás cómo se distribuye tu huella en tus actividades.',
+      buttons: ['OK'],
+      cssClass: 'popUp'
+    });
+
+    await alert.present();
   }
 }
 

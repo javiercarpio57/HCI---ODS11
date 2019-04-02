@@ -8,6 +8,9 @@
           <ion-text color="light" class="fw700 titulo2">Solars<br></ion-text>
         </ion-text>
     </ion-title>
+    <ion-buttons slot="end" >
+      <ion-icon name="information-circle-outline" style="zoom:2.0;" tappable (click)="info()"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -23,7 +26,7 @@
   <ion-card class="bg-button espaciado2" (click)="goToEnergy()" tappable>
     <ion-img [src]="themeCover2" class="image-button"></ion-img>
     <ion-button  expand="full" class="bg-primary" no-margin>
-      CÁLCULO ENERGÉTICO
+      CALCULAR CONSUMO ENERGÉTICO
     </ion-button>
   </ion-card>
 </ion-content>
