@@ -1,18 +1,20 @@
 <ion-header class="bg-secondary">
   <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-menu-button color="bg-dark"></ion-menu-button>
-    </ion-buttons>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
     <ion-title>
-        <ion-text color="light">
-          <ion-text color="light" class="fw700 titulo5">Cálculo energético<br></ion-text>
-        </ion-text>
+      <ion-text color="light">
+        <ion-text color="light" class="fw700 titulo5">Cálculo energético<br></ion-text>
+      </ion-text>
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-icon name="information-circle-outline" style="zoom:2.0;" tappable (click)="info()"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-
   <p text-center>
     <ion-text color="dark">
       <h2>Cálculo de tu consumo energético</h2>

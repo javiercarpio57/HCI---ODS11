@@ -6,11 +6,12 @@
       <div class="logo"></div>
       <h3 no-margin>
         <ion-text color="light" class="fw700">
-          <ion-text color="secondary">Registro</ion-text>
+          <ion-text color="white text20">Registro</ion-text>
         </ion-text>
       </h3>
     </div>
 
+    <br>
     <!-- Register form -->
     <form [formGroup]="onRegisterForm" class="list-form">
       <ion-item no-padding class="animated fadeInUp">
@@ -53,6 +54,7 @@
       </p>
     </form>
 
+    <br>
     <div margin-top>
       <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="register()" [disabled]="!onRegisterForm.valid"
         tappable>

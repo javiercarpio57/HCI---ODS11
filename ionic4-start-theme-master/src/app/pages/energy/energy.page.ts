@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {IonSlides, ModalController, NavController} from '@ionic/angular';
+import {IonSlides, ModalController, NavController, AlertController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 
 import { ImagePage } from './../modal/image/image.page';
@@ -59,7 +59,8 @@ export class EnergyPage implements OnInit {
     loop: true
   };
 
-  constructor(public modalCtrl: ModalController, private formBuilder: FormBuilder, private navCtrl: NavController) { 
+  constructor(public modalCtrl: ModalController, private formBuilder: FormBuilder, private navCtrl: NavController,
+    public alertCtrl: AlertController) { 
     
     this.myForm = this.createMyForm();
 
@@ -348,5 +349,16 @@ export class EnergyPage implements OnInit {
       horas: ['', HourValidator.isValid],
       dias: ['', DayValidator.isValid]
     });
+  }
+
+  async info() {
+    const alert = await this.alertCtrl.create({
+      header: 'Ayuda',
+      message: '1. Seleccionas algún dispositivo y puedes cambiar estos con las fechas que se encuentran a la par de los dispositivos.<br>2. Llenas todos los campos para calcular tus datos.<br>3. Haces clic en el botón + para agregar tu dispositivo y lo podrás ver en la sección "Tus dispositivos seleccionados".<br>4. Presionas en "Calcular" para calcular tus resultados.',
+      buttons: ['OK'],
+      cssClass: 'popUp'
+    });
+
+    await alert.present();
   }
 }
