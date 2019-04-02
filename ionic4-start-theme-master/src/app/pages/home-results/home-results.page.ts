@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { calculadora, CalculadoraEnergeticaService } from 'src/app/services/calculadora-energetica.service';
+import { Huella, HuellaCarbonoService } from 'src/app/services/huella-carbono.service';
+
 import {
   NavController,
   AlertController,
@@ -27,6 +30,9 @@ import { GlobalService } from '../../services/global.service';
   styleUrls: ['./home-results.page.scss']
 })
 export class HomeResultsPage implements OnInit{
+  calculadora : Observable<calculadora[]>;
+  test: Observable<Huella[]>;
+
   cualquierCosa: string = "";
   nombre: string = "";
 
@@ -62,8 +68,47 @@ export class HomeResultsPage implements OnInit{
     private route: ActivatedRoute,
     private UsuarioService: UsuarioService,
     public global: GlobalService,
-    private PersonasService: PersonasService
+    private PersonasService: PersonasService,
+    private CalculadoraEnergeticaService: CalculadoraEnergeticaService,
+    private HuellaCarbonoService: HuellaCarbonoService
   ) {
+    this.test = this.HuellaCarbonoService.getHuellas();
+    this.calculadora = this.CalculadoraEnergeticaService.getcalculadoras();
+
+    this.test.forEach(element => {
+      element.forEach(elment => {
+        if(elment.email == this.global.email){
+          this.saveData2(elment.fecha, elment.cantidadDeTierras);
+        }
+      })
+    })
+    
+    
+    this.calculadora.forEach(element => {
+      element.forEach(elment => {
+        if(elment.email == this.global.email){
+          this.saveData1(elment.fecha, elment.paneles);
+        }
+      })
+    })
+  }
+
+  ionViewDidLoad(){
+    console.log("Lenght" + this.global.dates.length);
+  }
+
+  saveData1(fecha: string, panel: number){
+    this.global.dates.push(fecha);
+    this.global.paneles.push(panel);
+    //this.dates2.push(fecha);
+    //this.paneles.push(panel);
+    console.log("hola");
+  }
+
+  saveData2(fecha: string, tierra: number){
+    this.global.datesEarth.push(fecha);
+    this.global.earth.push(tierra);
+    console.log("hola");
   }
   
   ngOnInit() {
@@ -80,6 +125,10 @@ export class HomeResultsPage implements OnInit{
     this.usuarios = this.UsuarioService.getUsers();
     this.personas = this.PersonasService.getpersonas();
     this.getId();
+  }
+
+  refresh(): void{
+    window.location.reload();
   }
 
   getId(){
@@ -123,7 +172,8 @@ export class HomeResultsPage implements OnInit{
   }
 
   ionViewDidEnter(){
-    
+    console.log("Refresh");
+    //this.refresh();
   }
 
   settings() {

@@ -75,9 +75,14 @@ export class TesthuellaresultadoPage implements OnInit {
     this.huella.porcentajeEnergetico = this.energeticoPorcentaje;
     this.huella.porcentajeTransporte = this.transportePorcentaje;
 
-    this.huella.fecha = this.fecha.getDate() + '/' + (this.fecha.getMonth()+1) + '/' +this.fecha.getFullYear() + ' ' + this.fecha.getHours() + ':' +this.fecha.getMinutes() + ':' +this.fecha.getSeconds();
+    var date = this.fecha.getDate() + '/' + (this.fecha.getMonth()+1) + '/' +this.fecha.getFullYear() + ' ' + this.fecha.getHours() + ':' +this.fecha.getMinutes() + ':' +this.fecha.getSeconds();
+    this.huella.fecha = date;
     this.saveHuella();
-0  }
+
+    this.global.datesEarth.push(date);
+    this.global.earth.push(this.calculoTierras);
+    
+  }
 
   async saveHuella(){
 
@@ -93,14 +98,14 @@ export class TesthuellaresultadoPage implements OnInit {
   calculoTierrasNecesarias(){
     this.sumaPuntos = parseFloat(this.passedId1) + parseFloat(this.passedId2) + parseFloat(this.passedId3) + parseFloat(this.passedId4) + parseFloat(this.passedId5) + parseFloat(this.passedId6) + parseFloat(this.passedId7) + parseFloat(this.passedId8) + parseFloat(this.passedId9);
     if(this.sumaPuntos >= 500){
-      this.calculoTierras = '5 Planetas Tierra';
+      this.calculoTierras = 5;
       this.images1 = []
       for (let i = 0; i < 5; i++){
         this.images1.push('assets/img/planeta.png');
       }
     }
     else if(this.sumaPuntos >= 450){
-      this.calculoTierras =  '4 Planetas Tierra';
+      this.calculoTierras =  4;
       this.images1 = []
       for (let i = 0; i < 4; i++){
         this.images1.push('assets/img/planeta.png'
@@ -108,7 +113,7 @@ export class TesthuellaresultadoPage implements OnInit {
       }
     }
     else if(this.sumaPuntos >= 400){
-      this.calculoTierras = '3.5 Planetas Tierra';
+      this.calculoTierras = 3.5;
       this.images1 = []
       for (let i = 0; i < 3; i++){
         this.images1.push('assets/img/planeta.png'
@@ -118,7 +123,7 @@ export class TesthuellaresultadoPage implements OnInit {
         );
     }
     else if(this.sumaPuntos >= 350){
-      this.calculoTierras = '3 Planetas Tierra';
+      this.calculoTierras = 3;
       this.images1 = []
       for (let i = 0; i < 3; i++){
         this.images1.push('assets/img/planeta.png'
@@ -126,7 +131,7 @@ export class TesthuellaresultadoPage implements OnInit {
       }
     }
     else if(this.sumaPuntos >= 300){
-      this.calculoTierras = '2.5 Planetas Tierra';
+      this.calculoTierras = 2.5;
       this.images1 = []
       for (let i = 0; i < 2; i++){
         this.images1.push('assets/img/planeta.png'
@@ -136,7 +141,7 @@ export class TesthuellaresultadoPage implements OnInit {
       );
     }
     else if(this.sumaPuntos >= 250){
-      this.calculoTierras = '2 Planetas Tierra';
+      this.calculoTierras = 2;
       this.images1 = []
       for (let i = 0; i < 2; i++){
         this.images1.push('assets/img/planeta.png'
@@ -144,7 +149,7 @@ export class TesthuellaresultadoPage implements OnInit {
       }
     }
     else if(this.sumaPuntos >= 200){
-      this.calculoTierras = '1.5 Planetas Tierra';
+      this.calculoTierras = 1.5;
       this.images1 = []
       for (let i = 0; i < 1; i++){
         this.images1.push('assets/img/planeta.png'
@@ -154,7 +159,7 @@ export class TesthuellaresultadoPage implements OnInit {
       );  
     }
     else{
-      this.calculoTierras = '1 Planeta Tierra';
+      this.calculoTierras = 1;
       this.images1 = []
       for (let i = 0; i < 1; i++){
         this.images1.push('assets/img/planeta.png'

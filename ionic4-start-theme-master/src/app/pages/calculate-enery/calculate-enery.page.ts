@@ -41,8 +41,12 @@ export class CalculateEneryPage implements OnInit {
     this.calculadora.email = this.global.email;
     this.calculadora.consumoTotal = this.datos;
     this.calculadora.paneles = this.cantPanel;
-    this.calculadora.fecha = this.fecha.getDate() + '/' + (this.fecha.getMonth()+1) + '/' +this.fecha.getFullYear() + ' ' + this.fecha.getHours() + ':' +this.fecha.getMinutes() + ':' +this.fecha.getSeconds(); 
+    var date = this.fecha.getDate() + '/' + (this.fecha.getMonth()+1) + '/' +this.fecha.getFullYear() + ' ' + this.fecha.getHours() + ':' +this.fecha.getMinutes() + ':' +this.fecha.getSeconds(); 
+    this.calculadora.fecha = date;
     this.saveCalculator();
+    this.global.dates.push(date);
+    this.global.paneles.push(this.datos);
+
   }
 
   async saveCalculator(){
