@@ -202,5 +202,9 @@ export class TesthuellaresultadoPage implements OnInit {
   goToMenuPrincipal() {
     this.navCtrl.navigateBack('/bienvenida-test');
   }
+
+  goToMenu(){
+    this.navCtrl.navigateBack('/home-results');
+  }
 }
 

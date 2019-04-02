@@ -78,7 +78,7 @@ export class LoginPage implements OnInit {
   
   async forgotPass() {
     const alert = await this.alertCtrl.create({
-      header: 'Olvidaste tu contraseña?',
+      header: '¿Olvidaste tu contraseña?',
       message: 'Ingrese la dirección de correo para mandar el link de reinicio.',
       inputs: [
         {

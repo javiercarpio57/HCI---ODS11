@@ -134,10 +134,28 @@
 
   <br>
 
+  <div text-center>
+    <ion-grid>
+      <ion-row>
+
+        <ion-col size="6">
+          <ion-button size="medium" expand="full" shape="round" color="medium" (click)="goToMenuPrincipal()" tappable>
+            Inicio del Test
+          </ion-button>
+        </ion-col>
+
+        <ion-col size="6">
+          <ion-button size="medium" expand="full" shape="round" color="success" (click)="goToMenu()" tappable>
+            Ir al menu
+          </ion-button>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </div>
+
   <div>
-    <ion-button size="medium" expand="full" shape="round" color="success" (click)="goToMenuPrincipal()" tappable>
-      Volver a Iniciar el Test
-    </ion-button>
+    
   </div>  
 
 </ion-content>

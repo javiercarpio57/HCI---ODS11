@@ -31,7 +31,7 @@ export class Testhuella4Page implements OnInit {
   }
   async alertaSeleccion(){
     const alert = await this.alertCtrl.create({
-      header: 'Seleccion de Respuesta',
+      header: 'Selección de respuesta',
       message: 'Debe de seleccionar una respuesta para poder continuar con el test.',
       buttons: ['OK']
     });
