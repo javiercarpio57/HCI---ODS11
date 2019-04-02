@@ -82,25 +82,25 @@ export class LoginPage implements OnInit {
   
   async forgotPass() {
     const alert = await this.alertCtrl.create({
-      header: 'Forgot Password?',
-      message: 'Enter you email address to send a reset link password.',
+      header: 'Olvidaste tu contraseña?',
+      message: 'Ingrese la dirección de correo para mandar el link de reinicio.',
       inputs: [
         {
           name: 'email',
           type: 'email',
-          placeholder: 'Email'
+          placeholder: 'Correo'
         }
       ],
       buttons: [
         {
-          text: 'Cancel',
+          text: 'Cancelar',
           role: 'cancel',
           //cssClass: 'secondary',
           handler: () => {
             ;
           }
         }, {
-          text: 'Confirm',
+          text: 'Confirmar',
           handler: async data => {
             this.resetPassword(data.email);
             //const loader = await this.loadingCtrl.create({
